@@ -4,7 +4,7 @@ export default function LandingPage() {
     return (
         <div>
             <section>
-                <h3>Lyme Disease</h3>
+                <h3>Lyme Disease: The Great Imitator</h3>
                 <p>In a recent study of 6,000+ Lyme patients, 97% reported persisting symptoms.</p>
             </section>
 
