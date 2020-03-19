@@ -291,7 +291,32 @@ export default {
         {
             "id": 1,
             "date": "March 14, 2020",
-            "overall": "Better"
-        }
+            "overall": "Better",
+            "newinfection": 0
+        },
+        {
+            "id": 2,
+            "date": "March 13, 2020",
+            "overall": "Same",
+            "newinfection": 0
+        },
+        {
+            "id": 3,
+            "date": "March 12, 2020",
+            "overall": "Same",
+            "newinfection": 0
+        },
+        {
+            "id": 4,
+            "date": "March 11, 2020",
+            "overall": "Worse",
+            "newinfection": 0
+        },
+        {
+            "id": 5,
+            "date": "March 10, 2020",
+            "overall": "Worse",
+            "newinfection": 0
+        },
     ]
 }

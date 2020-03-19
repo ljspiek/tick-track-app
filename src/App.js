@@ -3,6 +3,7 @@ import {Route, Link} from 'react-router-dom';
 import LandingPage from './LandingPage/LandingPage'
 import Nav from './Nav/Nav'
 import SymptomLog from './SymptomLog/SymptomLog'
+import SymptomSummary from './SymptomSummary/SymptomSummary'
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
         <LandingPage/>
       <main >
         <SymptomLog/>
+        <SymptomSummary/>
       </main>
       <footer>
         footer
