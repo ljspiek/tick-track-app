@@ -7,7 +7,7 @@ export default function Nav() {
          
           <Link to='/signup'>Sign Up</Link>
           <Link to='/signin'>Sign In</Link>
-          <Link to='/log'>Log</Link>
+          
         </nav>
     )
 }

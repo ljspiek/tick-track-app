@@ -8,8 +8,8 @@ export default class SymptomLog extends Component {
             <form id="log-symptoms">
                 <label htmlFor="log-date">Date:</label>
                 <input type="date" id="log-date" name="log-date"/>
-                <div className="form-section overall-health">
-                    <label htmlFor="overall-health"><h2>Overall Health</h2></label>
+                <section className="form-section overall-health">
+                    <label htmlFor="overall-health"><h3>Overall Health</h3></label>
                     <p>Generally, do you feel:</p>
                     {STORE.generalhealth.map(health =>
                         <div key={health.id}>
@@ -17,9 +17,9 @@ export default class SymptomLog extends Component {
                         <label htmlFor="overall-health">{health.rating}</label>
                         </div>
                     )}
-                </div>
-                <div className="form-section symptoms">
-                    <label htmlFor="symptoms"><h2>Symptoms</h2></label>
+                </section>
+                <section className="form-section symptoms">
+                    <label htmlFor="symptoms"><h3>Symptoms</h3></label>
                     {STORE.symptoms.map(symptom =>
                         <div key={symptom.id}>
                         <label htmlFor={symptom.symptom} >{symptom.symptom}</label>
@@ -32,9 +32,9 @@ export default class SymptomLog extends Component {
                         <br/>
                         </div>
                         )}
-                </div>
+                </section>
                 <div className="form-section new-infection">
-                    <p>Since your last symptom log, have there been any of the following:</p>
+                    <h3>Since your last symptom log, have there been any of the following:</h3>
                     {STORE.newinfectionindicators.map(indicator =>
                     <div key={indicator.id}>
                     <input type="checkbox" name="new-infection" value={indicator.indicator} className={indicator.indicator}/>
