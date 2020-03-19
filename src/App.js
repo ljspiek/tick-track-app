@@ -4,6 +4,8 @@ import LandingPage from './LandingPage/LandingPage'
 import Nav from './Nav/Nav'
 import SymptomLog from './SymptomLog/SymptomLog'
 import SymptomSummary from './SymptomSummary/SymptomSummary'
+import SignUp from './SignUp/SignUp'
+import SignIn from './SignIn/SignIn'
 
 
 class App extends Component {
@@ -20,6 +22,8 @@ class App extends Component {
       <main >
         <SymptomLog/>
         <SymptomSummary/>
+        <SignUp/>
+        <SignIn/>
       </main>
       <footer>
         footer
