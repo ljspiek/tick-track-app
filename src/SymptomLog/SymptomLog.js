@@ -3,7 +3,7 @@ import STORE from '../STORE'
 
 export default class SymptomLog extends Component {
     render() {
-        console.log(STORE)
+        
         return (
             <form id="log-symptoms">
                 <label htmlFor="log-date">Date:</label>
@@ -18,8 +18,18 @@ export default class SymptomLog extends Component {
                         </div>
                     )}
                 </section>
+                <section className="form-section new-infection">
+                    <h3>Since your last symptom log, have there been any of the following:</h3>
+                    {STORE.newinfectionindicators.map(indicator =>
+                    <div key={indicator.id}>
+                    <input type="checkbox" name="new-infection" value={indicator.indicator} className={indicator.indicator}/>
+                    <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
+                    <br/>
+                        </div>
+                        )}
+                </section>
                 <section className="form-section symptoms">
-                    <label htmlFor="symptoms"><h3>Symptoms</h3></label>
+                    <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>
                     {STORE.symptoms.map(symptom =>
                         <div key={symptom.id}>
                         <label htmlFor={symptom.symptom} >{symptom.symptom}</label>
@@ -33,17 +43,7 @@ export default class SymptomLog extends Component {
                         </div>
                         )}
                 </section>
-                <div className="form-section new-infection">
-                    <h3>Since your last symptom log, have there been any of the following:</h3>
-                    {STORE.newinfectionindicators.map(indicator =>
-                    <div key={indicator.id}>
-                    <input type="checkbox" name="new-infection" value={indicator.indicator} className={indicator.indicator}/>
-                    <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
-                    <br/>
-                        </div>
-                        )}
-                  
-                </div>
+               
                 <button>Delete</button>
                 <button>Update</button>
                 <button>Cancel</button>
