@@ -6,9 +6,9 @@ export default class SymptomLog extends Component {
         
         return (
             <form id="log-symptoms">
+                <section className="form-section overall-health">
                 <label htmlFor="log-date">Date:</label>
                 <input type="date" id="log-date" name="log-date"/>
-                <section className="form-section overall-health">
                     <label htmlFor="overall-health"><h3>Overall Health</h3></label>
                     <p>Generally, do you feel:</p>
                     {STORE.generalhealth.map(health =>
@@ -44,9 +44,7 @@ export default class SymptomLog extends Component {
                         )}
                 </section>
                
-                <button>Delete</button>
-                <button>Update</button>
-                <button>Cancel</button>
+              
                 <button>Save</button>
                 <button>Reset</button>
                 
