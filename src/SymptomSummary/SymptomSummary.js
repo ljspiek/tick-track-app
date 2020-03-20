@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import STORE from '../STORE'
+import SymptomsContext from '../SymptomsContext'
 
 export default class SymptomSummary extends Component {
+    static contextType = SymptomsContext
+
     render() {
         return (
             <div>
                 <h2>Symptom History</h2>
-                {STORE.mockdata.map(data =>
+                {this.context.symptomlog.map(data =>
                     <section key={data.id}>
                         <h3>{data.date}</h3>
                         <h4>Overall Health: {data.overall}</h4>

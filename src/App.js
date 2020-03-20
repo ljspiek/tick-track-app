@@ -16,15 +16,15 @@ import STORE from './STORE'
 class App extends Component {
 
   state = {
-    symptomlog: [STORE.symptomlog],
-    newinfectionindicators: [STORE.newinfectionindicators],
-    generalhealth: [STORE.generalhealth],
-    symptoms: [STORE.symptoms]
+    symptomlog: STORE.symptomlog,
+    newinfectionindicators: STORE.newinfectionindicators,
+    generalhealth: STORE.generalhealth,
+    symptoms: STORE.symptoms
   };
 
   componentDidMount() {
     //to do api call & set state
-    console.log(this.state)
+    
   }
 
   deleteLog = (logId) => {
@@ -53,6 +53,8 @@ class App extends Component {
       addLog: this.addLog
 
     }
+
+    // console.log("CONTEXT VALUE:", contextValue)
 
     return (
       <div className='App'>
