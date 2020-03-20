@@ -291,32 +291,202 @@ export default {
         {
             "id": 1,
             "date": "March 14, 2020",
-            "overall": "Better",
-            "newinfection": 0,
+            "generalhealth": {
+                "id": 4,
+                "rating": "Better"
+            },
+            "newinfectionindicators": [],
+
         },
         {
             "id": 2,
             "date": "March 13, 2020",
-            "overall": "Same",
-            "newinfection": 0
+            "generalhealth": {
+                "id": 3,
+                "rating": "Same"
+            },
+            "newinfectionindicators": [],
+            "symptoms": [
+                {
+                    "id": 1,
+                    "symptom": "Persistent swollen glands",
+                    "severity": "mild"
+                },
+                {
+                    "id": 2, 
+                    "symptom": "Sore throat",
+                    "severity": "mild"
+                },
+                {
+                    "id": 3,
+                    "symptom": "Fevers",
+                    "severity": "none"
+                },
+                {
+                    "id": 4,
+                    "symptom": "Sore soles, especially in AM",
+                    "severity": "moderate"
+                },
+                {
+                    "id": 5,
+                    "symptom": "Joint pain",
+                    "severity": "mild"
+                },
+                {
+                    "id": 6,
+                    "symptom": "Joint swelling",
+                    "severity": "mild"
+                },
+                {
+                    "id": 7,
+                    "symptom": "Unexplained back pain",
+                    "severity": "none"
+                },
+            ]
         },
         {
             "id": 3,
             "date": "March 12, 2020",
-            "overall": "Same",
-            "newinfection": 0
+            "generalhealth": {
+                "id": 3,
+                "rating": "Same"
+            },
+            "newinfectionindicators": [],
+            "symptoms": [
+                {
+                    "id": 1,
+                    "symptom": "Persistent swollen glands",
+                    "severity": "mild"
+                },
+                {
+                    "id": 2, 
+                    "symptom": "Sore throat",
+                    "severity": "moderate"
+                },
+                {
+                    "id": 3,
+                    "symptom": "Fevers",
+                    "severity": "mild"
+                },
+                {
+                    "id": 4,
+                    "symptom": "Sore soles, especially in AM",
+                    "severity": "moderate"
+                },
+                {
+                    "id": 5,
+                    "symptom": "Joint pain",
+                    "severity": "mild"
+                },
+                {
+                    "id": 6,
+                    "symptom": "Joint swelling",
+                    "severity": "mild"
+                },
+                {
+                    "id": 7,
+                    "symptom": "Unexplained back pain",
+                    "severity": "none"
+                },
+            ]
         },
         {
             "id": 4,
             "date": "March 11, 2020",
-            "overall": "Worse",
-            "newinfection": 0
+            "generalhealth": {
+                "id": 2,
+                "rating": "Worse"
+            },
+            "newinfectionindicators": [],
+            "symptoms": [
+                {
+                    "id": 1,
+                    "symptom": "Persistent swollen glands",
+                    "severity": "moderate"
+                },
+                {
+                    "id": 2, 
+                    "symptom": "Sore throat",
+                    "severity": "moderate"
+                },
+                {
+                    "id": 3,
+                    "symptom": "Fevers",
+                    "severity": "mild"
+                },
+                {
+                    "id": 4,
+                    "symptom": "Sore soles, especially in AM",
+                    "severity": "moderate"
+                },
+                {
+                    "id": 5,
+                    "symptom": "Joint pain",
+                    "severity": "mild"
+                },
+                {
+                    "id": 6,
+                    "symptom": "Joint swelling",
+                    "severity": "mild"
+                },
+                {
+                    "id": 7,
+                    "symptom": "Unexplained back pain",
+                    "severity": "none"
+                },
+            ]
         },
         {
             "id": 5,
             "date": "March 10, 2020",
-            "overall": "Worse",
-            "newinfection": 0
+            "generalhealth": {
+                "id": 1,
+                "rating": "Much Worse"
+            },
+            "newinfectionindicators": [
+                {
+                    "id": 2, 
+                    "indicator": "New spotted rash over large area",
+                    "value": 2
+                },
+            ],
+            "symptoms": [
+                {
+                    "id": 1,
+                    "symptom": "Persistent swollen glands",
+                    "severity": "severe"
+                },
+                {
+                    "id": 2, 
+                    "symptom": "Sore throat",
+                    "severity": "moderate"
+                },
+                {
+                    "id": 3,
+                    "symptom": "Fevers",
+                    "severity": "severe"
+                },
+                {
+                    "id": 4,
+                    "symptom": "Sore soles, especially in AM",
+                    "severity": "moderate"
+                },
+                {
+                    "id": 5,
+                    "symptom": "Joint pain",
+                    "severity": "mild"
+                },
+                {
+                    "id": 6,
+                    "symptom": "Joint swelling",
+                    "severity": "mild"
+                },
+                {
+                    "id": 7,
+                    "symptom": "Unexplained back pain",
+                    "severity": "none"
+                },
+            ]
         },
     ]
 }

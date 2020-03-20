@@ -11,8 +11,8 @@ export default class SymptomSummary extends Component {
                 {this.context.symptomlog.map(data =>
                     <section key={data.id}>
                         <h3>{data.date}</h3>
-                        <h4>Overall Health: {data.overall}</h4>
-                        <h4>New Infection Indicators: {data.newinfection}</h4>
+                        <h4>Overall Health: {data.generalhealth.rating}</h4>
+                        <h4>New Infection Indicators: {data.newinfectionindicators.length}</h4>
                         <button>Details</button>
                         <button>Delete</button>
                     </section>
