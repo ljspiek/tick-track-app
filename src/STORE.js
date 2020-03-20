@@ -149,7 +149,7 @@ export default {
             "symptom": "Ear pain"
         },
         {
-            "id:": 27,
+            "id": 27,
             "symptom": "Hearing: buzzing, ringing, decreased hearing"
         },
         {
@@ -287,12 +287,12 @@ export default {
 
 
     ],
-    "mockdata":[
+    "symptomlog":[
         {
             "id": 1,
             "date": "March 14, 2020",
             "overall": "Better",
-            "newinfection": 0
+            "newinfection": 0,
         },
         {
             "id": 2,

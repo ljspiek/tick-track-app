@@ -3,6 +3,7 @@ import STORE from '../STORE'
 
 export default class SymptomLog extends Component {
     render() {
+       console.log(this.props)
         
         return (
             <form id="log-symptoms">
