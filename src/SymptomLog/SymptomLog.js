@@ -8,6 +8,8 @@ export default class SymptomLog extends Component {
     render() {
        
         return (
+            <>
+            <h2>Symptom Log</h2>
             <form id="log-symptoms">
                 <section className="form-section overall-health">
                     <label htmlFor="log-date">Date:</label>
@@ -35,7 +37,7 @@ export default class SymptomLog extends Component {
                     <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>
                     {this.context.symptoms.map(symptom =>
                         <div key={symptom.id}>
-                        <label htmlFor={symptom.symptom} >{symptom.symptom}</label>
+                        <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
                         <select id={symptom.symptom} name={symptom.symptom}>
                             <option value="none">None</option>
                             <option value="mild">Mild</option>
@@ -52,6 +54,7 @@ export default class SymptomLog extends Component {
                 <button>Reset</button>
                 
             </form>
+            </>
         )
     }
 }

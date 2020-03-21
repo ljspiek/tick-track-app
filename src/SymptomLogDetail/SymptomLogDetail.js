@@ -17,10 +17,9 @@ export default class SymptomLogDetail extends Component {
         
         return (
             <div>
-                <h2>Symptom Log Detail</h2>
+                <h2>On {log.date} you reported:</h2>
                 
                     <section>
-                        <h3>{log.date}</h3>
                         <h4>Overall Health: {log.generalhealth.rating}</h4>
                         {newInfection > 0 && 
                         <h4>New Infection Indicators:</h4>
@@ -30,7 +29,7 @@ export default class SymptomLogDetail extends Component {
                                 <li>{indicators.indicator}</li>
                             </ul>
                         )}
-                        <h4>Symptoms Logged:</h4>
+                        <h4>Symptoms:</h4>
                         {log.symptoms.map(symptoms =>
                             <ul key={symptoms.id}>
                                 <li>{symptoms.symptom}: {symptoms.severity}</li>
