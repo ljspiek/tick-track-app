@@ -37,7 +37,12 @@ export default class SymptomLogDetail extends Component {
                             )}
                         <Link to='/summary'><button>Close</button></Link>
                         {/* TO DO:Make Close into 'x' at top */}
-                        <Link to={`/log/${log.id}/edit`}><button>Edit</button></Link>
+                        <Link to={{
+                            pathname:`/log/${log.id}/edit`,
+                            state: {
+                                currentlog: log
+                            }
+                            }}><button>Edit</button></Link>
                         {/* TO DO: Pencil icon - mobile only? */}
                         <button>Delete</button>
                     </section>

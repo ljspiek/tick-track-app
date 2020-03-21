@@ -290,7 +290,7 @@ export default {
     "symptomlog":[
         {
             "id": "1",
-            "date": "March 14, 2020",
+            "date": "2020-03-14",
             "generalhealth": {
                 "id": 4,
                 "rating": "Better"
@@ -337,7 +337,7 @@ export default {
         },
         {
             "id": "2",
-            "date": "March 13, 2020",
+            "date": "2020-03-13",
             "generalhealth": {
                 "id": 3,
                 "rating": "Same"
@@ -383,7 +383,7 @@ export default {
         },
         {
             "id": "3",
-            "date": "March 12, 2020",
+            "date": "2020-03-12",
             "generalhealth": {
                 "id": 3,
                 "rating": "Same"
@@ -429,7 +429,7 @@ export default {
         },
         {
             "id": "4",
-            "date": "March 11, 2020",
+            "date": "2020-03-11",
             "generalhealth": {
                 "id": 2,
                 "rating": "Worse"
@@ -475,7 +475,7 @@ export default {
         },
         {
             "id": "5",
-            "date": "March 10, 2020",
+            "date": "2020-03-10",
             "generalhealth": {
                 "id": 1,
                 "rating": "Much Worse"

@@ -5,6 +5,7 @@ const SymptomsContext = React.createContext({
     generalhealth: [],
     symptoms: [],
     symptomlog: [],
+    currentlog: {},
     addLog: () => {},
     deleteLog: () => {}
 

@@ -51,7 +51,8 @@ class App extends Component {
       generalhealth: this.state.generalhealth,
       symptoms: this.state.symptoms,
       deleteLog: this.deleteLog,
-      addLog: this.addLog
+      addLog: this.addLog,
+      currentlog: [],
 
     }
 
