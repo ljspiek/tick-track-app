@@ -10,26 +10,26 @@ export default class SymptomLog extends Component {
         return (
             <form id="log-symptoms">
                 <section className="form-section overall-health">
-                <label htmlFor="log-date">Date:</label>
-                <input type="date" id="log-date" name="log-date"/>
+                    <label htmlFor="log-date">Date:</label>
+                    <input type="date" id="log-date" name="log-date"/>
                     <label htmlFor="overall-health"><h3>Overall Health</h3></label>
                     <p>Generally, do you feel:</p>
                     {this.context.generalhealth.map(health =>
                         <div key={health.id}>
-                        <input type="radio" name="overall-health" value={health.value} className="overall-health-radio"/>
-                        <label htmlFor="overall-health">{health.rating}</label>
+                            <input type="radio" name="overall-health" value={health.value} className="overall-health-radio"/>
+                            <label htmlFor="overall-health">{health.rating}</label>
                         </div>
                     )}
                 </section>
                 <section className="form-section new-infection">
                     <h3>Since your last symptom log, have there been any of the following:</h3>
                     {this.context.newinfectionindicators.map(indicator =>
-                    <div key={indicator.id}>
-                    <input type="checkbox" name="new-infection" value={indicator.indicator} className={indicator.indicator}/>
-                    <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
-                    <br/>
+                        <div key={indicator.id}>
+                            <input type="checkbox" name="new-infection" value={indicator.indicator} className={indicator.indicator}/>
+                            <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
+                            <br/>
                         </div>
-                        )}
+                    )}
                 </section>
                 <section className="form-section symptoms">
                     <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>

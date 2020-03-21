@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import SymptomsContext from '../SymptomsContext'
 
 export default class SymptomSummary extends Component {
@@ -13,7 +14,7 @@ export default class SymptomSummary extends Component {
                         <h3>{data.date}</h3>
                         <h4>Overall Health: {data.generalhealth.rating}</h4>
                         <h4>New Infection Indicators: {data.newinfectionindicators.length}</h4>
-                        <button>Details</button>
+                        <Link to={`/log/${data.id}`}><button>Details</button></Link>
                         <button>Delete</button>
                     </section>
                     )}
