@@ -5,13 +5,7 @@ export default class SymptomLogEdit extends Component {
     static contextType = SymptomsContext
 
     state = {
-        symtoms: this.context.symptoms,
-        newinfectionindicators: this.context.newinfectionindicators,
-        generalhealth: this.context.generalhealth,
-        defaults: {
-            1: "mild",
-            2: "none"
-        },
+        defaults: {},
         currentlog: {
             "id": "1",
             "date": "March 14, 2020",
@@ -78,22 +72,35 @@ export default class SymptomLogEdit extends Component {
                 defaults: currentEntries
             })
     }
-    render() {
-        // const currentEntries = Object.fromEntries(
-        //     this.state.currentlog.symptoms.map(symptom => [
-        //         symptom.id,
-        //         symptom.severity
-        //     ])
-        // );
-        // console.log("CURRENT ENTRIES=",currentEntries)
 
-        // console.log("STATE =",this.state)
-        // console.log("CURRENT LOG=",this.state.currentlog)
+    symptomsForm = () => {
+        return (
+            <section className="form-section symptoms">
+                    <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>
+                    {this.context.symptoms.map(symptom =>
+                        <div key={symptom.id}>
+                        <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
+                        <select id={symptom.symptom} name={symptom.symptom} defaultValue={this.state.defaults[symptom.id] || "none"}>
+                            <option value="none">None</option>
+                            <option value="mild">Mild</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="severe">Severe</option>
+                        </select>
+                        <br/>
+                        </div>
+                        )}
+                </section>
+        )
+    }
+
+    render() {
+ 
         console.log(this.state.defaults)
         return (
+            
             <div>
                <h2>Symptoms Logged</h2>
-                
+            
                 <section>
                     <h3>{this.state.currentlog.date}</h3>
                     <h4>Overall Health: {this.state.currentlog.generalhealth.rating}</h4>
@@ -148,8 +155,8 @@ export default class SymptomLogEdit extends Component {
                 </section>
                
               
-                <button>Save</button>
-                <button>Reset</button>
+                <button>Update</button>
+                <button>Cancel</button>
                 
             </form>
             </div>
