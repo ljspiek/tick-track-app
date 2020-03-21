@@ -8,6 +8,7 @@ import SignUp from './SignUp/SignUp'
 import SignIn from './SignIn/SignIn'
 import SymptomLogDetail from './SymptomLogDetail/SymptomLogDetail'
 import NotFound from './NotFound/NotFound'
+import SymptomLogEdit from './SymptomLogEdit/SymptomLogEdit'
 import SymptomsContext from './SymptomsContext'
 import STORE from './STORE'
 
@@ -74,24 +75,18 @@ class App extends Component {
             <Route
               exact path='/log'
               component={SymptomLog}
-              // render={(props) => <SymptomLog 
-              //   {...props} 
-              //   symptoms={STORE.symptoms} 
-              //   generalhealth={STORE.generalhealth}
-              //   newinfection={STORE.newinfectionindicators}
-              //   />}
             />
             <Route
               exact path='/summary'
               component={SymptomSummary}
-              // render={(props) => <SymptomSummary 
-              //   {...props}
-              //   symptomlog={STORE.symptomlog}
-              // />}
             />
             <Route
               exact path='/log/:logId'
               component={SymptomLogDetail}
+            />
+            <Route
+              exact path='/log/:logId/edit'
+              component={SymptomLogEdit}
             />
             <Route
               exact path='/signUp'
