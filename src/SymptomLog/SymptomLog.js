@@ -8,12 +8,11 @@ export default class SymptomLog extends Component {
         logDate: "",
         generalhealth: "",
         newinfectionindicators: [],
+        symptoms: {}
         
     }
 
     handleInputChange = (e) => {
-        console.log(e.target.name)
-        console.log(e.target.value)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -22,19 +21,30 @@ export default class SymptomLog extends Component {
     handleMultipleSelections = (e) => {
         const selections = this.state.newinfectionindicators
         const newSelections = selections.concat(e.target.value)
+        const filteredSelections = [...new Set(newSelections)]
         this.setState({
-            newinfectionindicators: newSelections
+            newinfectionindicators: filteredSelections
+        })
+    }
+
+    handleSymptomSelections = (e) => {
+        let newSymptoms
+        const symptoms = this.state.symptoms
+        const newSelections = {[e.target.name]: e.target.value}
+        newSymptoms = {...symptoms, ...newSelections}
+        this.setState({
+            symptoms: newSymptoms
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(e.target)
-        console.log(e.target[0])
-        console.log(this.uncontrolInput.value)
-        let logForm = document.getElementById('log-symptoms')
-        let formData = new FormData(logForm)
-        console.log(formData)
+        const logDate = this.state.logDate
+        const generalhealth = this.state.generalhealth
+        const newinfectionindicators = this.state.newinfectionindicators
+        const symptoms = this.state.symptoms
+        
+        
 
         //POST api to-do
     }
@@ -73,7 +83,7 @@ export default class SymptomLog extends Component {
                     {this.context.symptoms.map(symptom =>
                         <div key={symptom.id}>
                         <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
-                        <select onChange={(e) => {this.handleInputChange(e)}} id={symptom.symptom} name={symptom.symptom}>
+                        <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.symptom} name={symptom.symptom}>
                             <option value="none">None</option>
                             <option value="mild">Mild</option>
                             <option value="moderate">Moderate</option>
