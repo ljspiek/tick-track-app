@@ -45,6 +45,8 @@ class App extends Component {
 
   render() {
 
+    
+
     const contextValue = {
       symptomlog: this.state.symptomlog,
       newinfectionindicators: this.state.newinfectionindicators,

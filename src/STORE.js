@@ -24,23 +24,28 @@ export default {
     "generalhealth": [
         {
             "id": 1,
-            "rating": "Much Worse"
+            "rating": "Much Worse",
+            "name": "muchworse"
         },
         {
             "id": 2,
-            "rating": "Worse"
+            "rating": "Worse",
+            "name": "worse"
         },
         {
             "id": 3,
-            "rating": "Same"
+            "rating": "Same",
+            "name": "same"
         },
         {
             "id": 4,
-            "rating": "Better"
+            "rating": "Better",
+            "name": "better"
         },
         {
             "id": 5,
-            "rating": "Much Better"
+            "rating": "Much Better",
+            "name": "muchbetter"
         }
     ],
     "symptoms": [
@@ -295,7 +300,32 @@ export default {
                 "id": 4,
                 "rating": "Better"
             },
-            "newinfectionindicators": [],
+            "newinfectionindicators": [
+                {
+                    "id": 1,
+                    "indicator": "New Tick Bite",
+                    "value": 1,
+                    "checked": false
+                },
+                {
+                    "id": 2, 
+                    "indicator": "New spotted rash over large area",
+                    "value": 2,
+                    "checked": false
+                },
+                {
+                    "id": 3,
+                    "indicator": "New 'EM' rash (discrete circle)",
+                    "value": 3,
+                    "checked": false
+                },
+                {
+                    "id": 4,
+                    "indicator": "New linear, red streaks",
+                    "value": 4,
+                    "checked": false
+                }
+            ],
             "symptoms": [
                 {
                     "id": 1,
@@ -342,7 +372,32 @@ export default {
                 "id": 3,
                 "rating": "Same"
             },
-            "newinfectionindicators": [],
+            "newinfectionindicators": [
+                {
+                    "id": 1,
+                    "indicator": "New Tick Bite",
+                    "value": 1,
+                    "checked": false
+                },
+                {
+                    "id": 2, 
+                    "indicator": "New spotted rash over large area",
+                    "value": 2,
+                    "checked": false
+                },
+                {
+                    "id": 3,
+                    "indicator": "New 'EM' rash (discrete circle)",
+                    "value": 3,
+                    "checked": false
+                },
+                {
+                    "id": 4,
+                    "indicator": "New linear, red streaks",
+                    "value": 4,
+                    "checked": false
+                }
+            ],
             "symptoms": [
                 {
                     "id": 1,
@@ -388,7 +443,32 @@ export default {
                 "id": 3,
                 "rating": "Same"
             },
-            "newinfectionindicators": [],
+            "newinfectionindicators": [
+                {
+                    "id": 1,
+                    "indicator": "New Tick Bite",
+                    "value": 1,
+                    "checked": false
+                },
+                {
+                    "id": 2, 
+                    "indicator": "New spotted rash over large area",
+                    "value": 2,
+                    "checked": false
+                },
+                {
+                    "id": 3,
+                    "indicator": "New 'EM' rash (discrete circle)",
+                    "value": 3,
+                    "checked": false
+                },
+                {
+                    "id": 4,
+                    "indicator": "New linear, red streaks",
+                    "value": 4,
+                    "checked": false
+                }
+            ],
             "symptoms": [
                 {
                     "id": 1,
@@ -434,7 +514,32 @@ export default {
                 "id": 2,
                 "rating": "Worse"
             },
-            "newinfectionindicators": [],
+            "newinfectionindicators": [
+                {
+                    "id": 1,
+                    "indicator": "New Tick Bite",
+                    "value": 1,
+                    "checked": false
+                },
+                {
+                    "id": 2, 
+                    "indicator": "New spotted rash over large area",
+                    "value": 2,
+                    "checked": false
+                },
+                {
+                    "id": 3,
+                    "indicator": "New 'EM' rash (discrete circle)",
+                    "value": 3,
+                    "checked": false
+                },
+                {
+                    "id": 4,
+                    "indicator": "New linear, red streaks",
+                    "value": 4,
+                    "checked": false
+                }
+            ],
             "symptoms": [
                 {
                     "id": 1,
@@ -481,11 +586,32 @@ export default {
                 "rating": "Much Worse"
             },
             "newinfectionindicators": [
+              
+                {
+                    "id": 1,
+                    "indicator": "New Tick Bite",
+                    "value": 1,
+                    "checked": false
+                },
                 {
                     "id": 2, 
                     "indicator": "New spotted rash over large area",
-                    "value": 2
+                    "value": 2,
+                    "checked": true
                 },
+                {
+                    "id": 3,
+                    "indicator": "New 'EM' rash (discrete circle)",
+                    "value": 3,
+                    "checked": false
+                },
+                {
+                    "id": 4,
+                    "indicator": "New linear, red streaks",
+                    "value": 4,
+                    "checked": false
+                }
+                
             ],
             "symptoms": [
                 {

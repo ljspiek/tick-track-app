@@ -17,9 +17,9 @@ export default class SymptomLogEdit extends Component {
 
 
     render() {
-        let checked
-        if(this.state.currentlog.newinfectionindicators.length > 0) {checked = "checked"}
-        console.log(checked)
+        // let checked
+        // if(this.state.currentlog.newinfectionindicators.length > 0) {checked = "checked"}
+        // console.log(checked)
 
         const symptomEntries = Object.fromEntries(
             this.state.currentlog.symptoms.map(symptom => [
@@ -28,23 +28,19 @@ export default class SymptomLogEdit extends Component {
             ])
         );
 
-        // const currentGeneralHealth = Object.fromEntries(
-        //     this.state.currentlog.generalhealth.map(health => [
-        //         health.id,
-        //         health.rating
-        //     ])
-        // );
+        console.log("SYMPTOM ENTRIES:", symptomEntries)
+
+        
         const newInfections = Object.fromEntries(
             this.state.currentlog.newinfectionindicators.map(infections => [
                 infections.id,
-                infections.indicator
+                // infections.indicator,
+                infections.checked
             ])
-        )
-        console.log(newInfections)
-        
+        );
+        console.log("NEW INFECTIONS:", newInfections)
+        console.log('NEWINFECTIONIND:', this.state.currentlog.newinfectionindicators)
  
-        console.log(this.state.currentlog.generalhealth)
-
        
         return (
             
@@ -70,7 +66,7 @@ export default class SymptomLogEdit extends Component {
                     <h3>Since your last symptom log, have there been any of the following:</h3>
                     {this.context.newinfectionindicators.map(indicator =>
                         <div key={indicator.id}>
-                            <input type="checkbox" name="new-infection" value={indicator.indicator} className={indicator.indicator}/>
+                            <input type="checkbox" name="new-infection" value={indicator.indicator} className={indicator.indicator} defaultChecked={false}/>
                             <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
                             <br/>
                         </div>

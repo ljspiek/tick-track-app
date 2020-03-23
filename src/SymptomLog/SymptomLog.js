@@ -4,21 +4,52 @@ import SymptomsContext from '../SymptomsContext'
 export default class SymptomLog extends Component {
     static contextType = SymptomsContext
 
+    state = {
+        logDate: "",
+        generalhealth: {
+            muchworse: "",
+            worse: "",
+            same: "",
+            better: "",
+            muchbetter: ""
+        }
+    }
+
+    handleInputChange = (e) => {
+        // console.log(e.target.name)
+        // console.log(e.target.value)
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(e.target)
+        console.log(e.target[0])
+        console.log(this.uncontrolInput.value)
+        let logForm = document.getElementById('log-symptoms')
+        let formData = new FormData(logForm)
+        console.log(formData)
+
+        //POST api to-do
+    }
 
     render() {
-       
+        
+
         return (
             <>
             <h2>Symptom Log</h2>
-            <form id="log-symptoms">
+            <form id="log-symptoms" onSubmit={(e) => {this.handleSubmit(e)}}>
                 <section className="form-section overall-health">
                     <label htmlFor="log-date">Date:</label>
-                    <input type="date" id="log-date" name="log-date"/>
+                    <input onChange={(e) => {this.handleInputChange(e)}} value={this.state.logDate} type="date" id="log-date" name="logDate" ref={(a) => this.uncontrolInput = a}/>
                     <label htmlFor="overall-health"><h3>Overall Health</h3></label>
                     <p>Generally, do you feel:</p>
                     {this.context.generalhealth.map(health =>
                         <div key={health.id}>
-                            <input type="radio" name="overall-health" value={health.value} className="overall-health-radio"/>
+                            <input type="radio" name={health.name} value={health.value} className="overall-health-radio"/>
                             <label htmlFor="overall-health">{health.rating}</label>
                         </div>
                     )}
@@ -50,7 +81,9 @@ export default class SymptomLog extends Component {
                 </section>
                
               
-                <button>Save</button>
+                <button type="submit">
+                    Save
+                </button>
                 <button>Reset</button>
                 
             </form>
