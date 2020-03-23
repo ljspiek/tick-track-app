@@ -6,20 +6,24 @@ export default class SymptomLog extends Component {
 
     state = {
         logDate: "",
-        generalhealth: {
-            muchworse: "",
-            worse: "",
-            same: "",
-            better: "",
-            muchbetter: ""
-        }
+        generalhealth: "",
+        newinfectionindicators: [],
+        
     }
 
     handleInputChange = (e) => {
-        // console.log(e.target.name)
-        // console.log(e.target.value)
+        console.log(e.target.name)
+        console.log(e.target.value)
         this.setState({
             [e.target.name]: e.target.value
+        })
+    }
+
+    handleMultipleSelections = (e) => {
+        const selections = this.state.newinfectionindicators
+        const newSelections = selections.concat(e.target.value)
+        this.setState({
+            newinfectionindicators: newSelections
         })
     }
 
@@ -49,7 +53,7 @@ export default class SymptomLog extends Component {
                     <p>Generally, do you feel:</p>
                     {this.context.generalhealth.map(health =>
                         <div key={health.id}>
-                            <input type="radio" name={health.name} value={health.value} className="overall-health-radio"/>
+                            <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.rating} className="overall-health-radio"/>
                             <label htmlFor="overall-health">{health.rating}</label>
                         </div>
                     )}
@@ -58,7 +62,7 @@ export default class SymptomLog extends Component {
                     <h3>Since your last symptom log, have there been any of the following:</h3>
                     {this.context.newinfectionindicators.map(indicator =>
                         <div key={indicator.id}>
-                            <input type="checkbox" name="new-infection" value={indicator.indicator} className={indicator.indicator}/>
+                            <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator}/>
                             <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
                             <br/>
                         </div>
@@ -69,7 +73,7 @@ export default class SymptomLog extends Component {
                     {this.context.symptoms.map(symptom =>
                         <div key={symptom.id}>
                         <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
-                        <select id={symptom.symptom} name={symptom.symptom}>
+                        <select onChange={(e) => {this.handleInputChange(e)}} id={symptom.symptom} name={symptom.symptom}>
                             <option value="none">None</option>
                             <option value="mild">Mild</option>
                             <option value="moderate">Moderate</option>
