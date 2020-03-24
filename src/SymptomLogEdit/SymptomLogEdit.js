@@ -5,7 +5,9 @@ export default class SymptomLogEdit extends Component {
     static contextType = SymptomsContext
 
     state = {
-        currentlog: this.props.location.state.currentlog,
+        currentlog: this.context.symptomlog.find(
+            log => { return log.id === this.props.match.params.logId }
+            ),
         logDate: "",
         generalhealth: "",
         newinfectionindicators: [],
@@ -22,7 +24,7 @@ export default class SymptomLogEdit extends Component {
         const selections = this.state.newinfectionindicators
         let filteredSelections = []
         if(e.target.checked) {
-            const newSelections = selections.concat(e.target.value)
+            const newSelections = selections.concat({id: e.target.id, indicator: e.target.value})
             filteredSelections = [...new Set(newSelections)]
         } else {
             filteredSelections = selections.filter(cb => e.target.value !== cb)
@@ -60,9 +62,6 @@ export default class SymptomLogEdit extends Component {
 
 
     render() {
-        // let checked
-        // if(this.state.currentlog.newinfectionindicators.length > 0) {checked = "checked"}
-        // console.log(checked)
 
         const symptomEntries = Object.fromEntries(
             this.state.currentlog.symptoms.map(symptom => [
@@ -71,26 +70,13 @@ export default class SymptomLogEdit extends Component {
             ])
         );
 
-        console.log("SYMPTOM ENTRIES:", symptomEntries)
-
-        
         const newInfections = Object.fromEntries(
             this.state.currentlog.newinfectionindicators.map(infections => [
                 infections.id,
                 infections.indicator,
-                // infections.checked
             ])
         );
-        console.log("newInfections:", newInfections)
-
-        const indicators = this.state.currentlog.newinfectionindicators.map(indicator => [
-            indicator.id,
-            indicator.indicator
-        ])
         
-        console.log("indicators:", indicators)
- 
-       
         return (
             
             <div>
@@ -115,7 +101,7 @@ export default class SymptomLogEdit extends Component {
                     <h3>Since your last symptom log, have there been any of the following:</h3>
                     {this.context.newinfectionindicators.map(indicator =>
                         <div key={indicator.id}>
-                            <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id) ? true : false)}/>
+                            <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
                             <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
                             <br/>
                         </div>

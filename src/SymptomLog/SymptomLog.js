@@ -22,7 +22,7 @@ export default class SymptomLog extends Component {
         const selections = this.state.newinfectionindicators
         let filteredSelections = []
         if(e.target.checked) {
-            const newSelections = selections.concat(e.target.value)
+            const newSelections = selections.concat({id: e.target.id, indicator: e.target.value})
             filteredSelections = [...new Set(newSelections)]
         } else {
             filteredSelections = selections.filter(cb => e.target.value !== cb)
@@ -48,7 +48,7 @@ export default class SymptomLog extends Component {
         const generalhealth = this.state.generalhealth
         const newinfectionindicators = this.state.newinfectionindicators
         const symptoms = this.state.symptoms
-        console.log(logDate, generalhealth, newinfectionindicators, symptoms)
+        console.log("LOGDATE:", logDate, "GENERALHEALTH:", generalhealth, "NEWINFECTIONS:", newinfectionindicators, "SYMPTOMS:", symptoms)
         
 
         //POST api to-do
@@ -77,7 +77,7 @@ export default class SymptomLog extends Component {
                     <h3>Since your last symptom log, have there been any of the following:</h3>
                     {this.context.newinfectionindicators.map(indicator =>
                         <div key={indicator.id}>
-                            <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator}/>
+                            <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator}/>
                             <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
                             <br/>
                         </div>

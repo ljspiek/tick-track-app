@@ -13,8 +13,6 @@ export default class SymptomLogDetail extends Component {
         
         const newInfection = log.newinfectionindicators.length
         
-
-        
         return (
             <div>
                 <h2>On {log.date} you reported:</h2>

@@ -599,12 +599,12 @@ export default {
                     "value": 2,
                     "checked": true
                 },
-                // {
-                //     "id": 3,
-                //     "indicator": "New 'EM' rash (discrete circle)",
-                //     "value": 3,
-                //     "checked": false
-                // },
+                {
+                    "id": 3,
+                    "indicator": "New 'EM' rash (discrete circle)",
+                    "value": 3,
+                    "checked": false
+                },
                 // {
                 //     "id": 4,
                 //     "indicator": "New linear, red streaks",
