@@ -8,7 +8,7 @@ export default class SymptomLog extends Component {
         logDate: "",
         generalhealth: "",
         newinfectionindicators: [],
-        symptoms: {}
+        symptoms: []
         
     }
 
@@ -20,18 +20,23 @@ export default class SymptomLog extends Component {
 
     handleMultipleSelections = (e) => {
         const selections = this.state.newinfectionindicators
-        const newSelections = selections.concat(e.target.value)
-        const filteredSelections = [...new Set(newSelections)]
+        let filteredSelections = []
+        if(e.target.checked) {
+            const newSelections = selections.concat(e.target.value)
+            filteredSelections = [...new Set(newSelections)]
+        } else {
+            filteredSelections = selections.filter(cb => e.target.value !== cb)
+        }
         this.setState({
             newinfectionindicators: filteredSelections
         })
+        
     }
 
     handleSymptomSelections = (e) => {
-        let newSymptoms
         const symptoms = this.state.symptoms
-        const newSelections = {[e.target.name]: e.target.value}
-        newSymptoms = {...symptoms, ...newSelections}
+        const newSelections = {id: e.target.id, severity: e.target.value, symptom: e.target.name}
+        const newSymptoms = symptoms.concat(newSelections)
         this.setState({
             symptoms: newSymptoms
         })
@@ -43,7 +48,7 @@ export default class SymptomLog extends Component {
         const generalhealth = this.state.generalhealth
         const newinfectionindicators = this.state.newinfectionindicators
         const symptoms = this.state.symptoms
-        
+        console.log(logDate, generalhealth, newinfectionindicators, symptoms)
         
 
         //POST api to-do
@@ -83,7 +88,7 @@ export default class SymptomLog extends Component {
                     {this.context.symptoms.map(symptom =>
                         <div key={symptom.id}>
                         <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
-                        <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.symptom} name={symptom.symptom}>
+                        <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom}>
                             <option value="none">None</option>
                             <option value="mild">Mild</option>
                             <option value="moderate">Moderate</option>
