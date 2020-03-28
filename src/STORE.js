@@ -300,32 +300,7 @@ export default {
                 "id": 4,
                 "rating": "Better"
             },
-            "newinfectionindicators": [
-                // {
-                //     "id": 1,
-                //     "indicator": "New Tick Bite",
-                //     "value": 1,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 2, 
-                //     "indicator": "New spotted rash over large area",
-                //     "value": 2,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 3,
-                //     "indicator": "New 'EM' rash (discrete circle)",
-                //     "value": 3,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 4,
-                //     "indicator": "New linear, red streaks",
-                //     "value": 4,
-                //     "checked": false
-                // }
-            ],
+            "newinfectionindicators": [],
             "symptoms": [
                 {
                     "id": 1,
@@ -372,32 +347,7 @@ export default {
                 "id": 3,
                 "rating": "Same"
             },
-            "newinfectionindicators": [
-                // {
-                //     "id": 1,
-                //     "indicator": "New Tick Bite",
-                //     "value": 1,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 2, 
-                //     "indicator": "New spotted rash over large area",
-                //     "value": 2,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 3,
-                //     "indicator": "New 'EM' rash (discrete circle)",
-                //     "value": 3,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 4,
-                //     "indicator": "New linear, red streaks",
-                //     "value": 4,
-                //     "checked": false
-                // }
-            ],
+            "newinfectionindicators": [],
             "symptoms": [
                 {
                     "id": 1,
@@ -443,32 +393,7 @@ export default {
                 "id": 3,
                 "rating": "Same"
             },
-            "newinfectionindicators": [
-                // {
-                //     "id": 1,
-                //     "indicator": "New Tick Bite",
-                //     "value": 1,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 2, 
-                //     "indicator": "New spotted rash over large area",
-                //     "value": 2,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 3,
-                //     "indicator": "New 'EM' rash (discrete circle)",
-                //     "value": 3,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 4,
-                //     "indicator": "New linear, red streaks",
-                //     "value": 4,
-                //     "checked": false
-                // }
-            ],
+            "newinfectionindicators": [],
             "symptoms": [
                 {
                     "id": 1,
@@ -514,32 +439,7 @@ export default {
                 "id": 2,
                 "rating": "Worse"
             },
-            "newinfectionindicators": [
-                // {
-                //     "id": 1,
-                //     "indicator": "New Tick Bite",
-                //     "value": 1,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 2, 
-                //     "indicator": "New spotted rash over large area",
-                //     "value": 2,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 3,
-                //     "indicator": "New 'EM' rash (discrete circle)",
-                //     "value": 3,
-                //     "checked": false
-                // },
-                // {
-                //     "id": 4,
-                //     "indicator": "New linear, red streaks",
-                //     "value": 4,
-                //     "checked": false
-                // }
-            ],
+            "newinfectionindicators": [],
             "symptoms": [
                 {
                     "id": 1,
@@ -587,12 +487,7 @@ export default {
             },
             "newinfectionindicators": [
               
-                // {
-                //     "id": 1,
-                //     "indicator": "New Tick Bite",
-                //     "value": 1,
-                //     "checked": false
-                // },
+               
                 {
                     "id": 2, 
                     "indicator": "New spotted rash over large area",
@@ -605,12 +500,7 @@ export default {
                     "value": 3,
                     "checked": false
                 },
-                // {
-                //     "id": 4,
-                //     "indicator": "New linear, red streaks",
-                //     "value": 4,
-                //     "checked": false
-                // }
+                
                 
             ],
             "symptoms": [

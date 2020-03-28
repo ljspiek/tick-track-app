@@ -11,6 +11,7 @@ import NotFound from './NotFound/NotFound'
 import SymptomLogEdit from './SymptomLogEdit/SymptomLogEdit'
 import SymptomsContext from './SymptomsContext'
 import STORE from './STORE'
+import config from './config';
 
 
 
@@ -18,13 +19,34 @@ class App extends Component {
 
   state = {
     symptomlog: STORE.symptomlog,
-    newinfectionindicators: STORE.newinfectionindicators,
-    generalhealth: STORE.generalhealth,
-    symptoms: STORE.symptoms
+    newinfectionindicators: [],
+    generalhealth: [],
+    symptoms: []
   };
 
   componentDidMount() {
-    //to do api call & set state
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/fields`, {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+          'Authorization': `Bearer ${config.API_KEY}`,
+          'Access-Control-Allow-Origin': 'no-cors'
+        }
+      })
+    ])
+    .then(([fieldsRes]) => {
+      if(!fieldsRes.ok)
+        return fieldsRes.json().then(e => Promise.reject(e));
+      return Promise.all([fieldsRes.json()]);
+    })
+    .then(([fields]) => {
+      this.setState({
+        newinfectionindicators: fields.newinfectionindicators,
+        generalhealth: fields.generalhealth,
+        symptoms: fields.symptoms
+      })
+    })
     
   }
 
