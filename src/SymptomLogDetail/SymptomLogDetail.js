@@ -43,11 +43,8 @@ export default class SymptomLogDetail extends Component {
     }
 
     render() {
-        
-     
+        const logId = this.props.match.params.logId
         const log = this.state.log
-        
-        // const newInfection = log.newinfectionindicators.length
         
         if(log.length !==0) {
             return (
@@ -72,7 +69,7 @@ export default class SymptomLogDetail extends Component {
                                 )}
                             <Link to='/summary'><button>Close</button></Link>
                             {/* TO DO:Make Close into 'x' at top */}
-                            <Link to={{pathname:`/log/${log.id}/edit`}}><button>Edit</button></Link>
+                            <Link to={{pathname:`/log/${logId}/edit`}}><button>Edit</button></Link>
                             {/* TO DO: Pencil icon - mobile only? */}
                             <button>Delete</button>
                         </section>
