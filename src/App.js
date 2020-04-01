@@ -10,7 +10,6 @@ import SymptomLogDetail from './SymptomLogDetail/SymptomLogDetail'
 import NotFound from './NotFound/NotFound'
 import SymptomLogEdit from './SymptomLogEdit/SymptomLogEdit'
 import SymptomsContext from './SymptomsContext'
-import STORE from './STORE'
 import config from './config';
 
 
@@ -18,7 +17,7 @@ import config from './config';
 class App extends Component {
 
   state = {
-    symptomlog: STORE.symptomlog,
+    symptomlog: [],
     newinfectionindicators: [],
     generalhealth: [],
     symptoms: []
@@ -33,18 +32,26 @@ class App extends Component {
           'Authorization': `Bearer ${config.API_KEY}`,
           'Access-Control-Allow-Origin': 'no-cors'
         }
+      }),
+      fetch(`${config.API_ENDPOINT}/log`, {
+         'content-type': 'application/json',
+          'Authorization': `Bearer ${config.API_KEY}`,
+          'Access-Control-Allow-Origin': 'no-cors'
       })
     ])
-    .then(([fieldsRes]) => {
+    .then(([fieldsRes, logRes]) => {
       if(!fieldsRes.ok)
         return fieldsRes.json().then(e => Promise.reject(e));
-      return Promise.all([fieldsRes.json()]);
+      if(!logRes.ok)
+        return logRes.json().then(e => Promise.reject(e));
+    return Promise.all([fieldsRes.json(), logRes.json()]);
     })
-    .then(([fields]) => {
+    .then(([fields,log]) => {
       this.setState({
         newinfectionindicators: fields.newinfectionindicators,
         generalhealth: fields.generalhealth,
-        symptoms: fields.symptoms
+        symptoms: fields.symptoms,
+        symptomlog: log
       })
     })
     

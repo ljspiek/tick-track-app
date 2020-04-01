@@ -54,6 +54,10 @@ export default class SymptomLog extends Component {
         //POST api to-do
     }
 
+    componentDidMount() {
+        console.log('BUG')
+    }
+
     render() {
         
 
