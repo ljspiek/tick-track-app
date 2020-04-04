@@ -105,7 +105,9 @@ export default class SymptomLogEdit extends Component {
                         infections.indicator,
                     ])
                 );
-            
+
+                
+           
             return (
                 
                 <div>
@@ -116,7 +118,7 @@ export default class SymptomLogEdit extends Component {
                     <form id="log-symptoms" onSubmit={(e) => {this.handleSubmit(e)}}>
                     <section className="form-section overall-health">
                         <label htmlFor="log-date">Date:</label>
-                        <input onChange={(e) => {this.handleInputChange(e)}} type="date" id="log-date" name="logDate" defaultValue={this.state.currentlog.date}/>
+                        <input onChange={(e) => {this.handleInputChange(e)}} type="date" id="log-date" name="logDate" defaultValue={this.state.currentlog.header[0].date}/>
                         <label htmlFor="overall-health"><h3>Overall Health</h3></label>
                         <p>Generally, do you feel:</p>
                         {this.context.generalhealth.map(health =>

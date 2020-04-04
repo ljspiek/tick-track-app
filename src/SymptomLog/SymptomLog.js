@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import config from '../config'
 import SymptomsContext from '../SymptomsContext'
 
 export default class SymptomLog extends Component {
@@ -22,7 +23,7 @@ export default class SymptomLog extends Component {
         const selections = this.state.newinfectionindicators
         let filteredSelections = []
         if(e.target.checked) {
-            const newSelections = selections.concat({id: e.target.id, indicator: e.target.value})
+            const newSelections = selections.concat({newinfectionindicators_id: e.target.id})
             filteredSelections = [...new Set(newSelections)]
         } else {
             filteredSelections = selections.filter(cb => e.target.value !== cb)
@@ -35,7 +36,7 @@ export default class SymptomLog extends Component {
 
     handleSymptomSelections = (e) => {
         const symptoms = this.state.symptoms
-        const newSelections = {id: e.target.id, severity: e.target.value, symptom: e.target.name}
+        const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
         const newSymptoms = symptoms.concat(newSelections)
         this.setState({
             symptoms: newSymptoms
@@ -49,9 +50,37 @@ export default class SymptomLog extends Component {
         const newinfectionindicators = this.state.newinfectionindicators
         const symptoms = this.state.symptoms
         console.log("LOGDATE:", logDate, "GENERALHEALTH:", generalhealth, "NEWINFECTIONS:", newinfectionindicators, "SYMPTOMS:", symptoms)
-        
+        const log = {
+            date_created: logDate,
+            general_health_id: generalhealth,
+            user_id: 1,
+            newinfectionindicators: newinfectionindicators,
+            symptoms: symptoms
+        }
+        fetch(`${config.API_ENDPOINT}/log`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_KEY}`
+            },
+            body: JSON.stringify(log)
+        })
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+                return res.json()
+        })
+        .then((data) => {
+            this.props.history.push({
+                pathname: '/summary',
+                state: { detail: data}
+            })
+        })
+        .catch(error => {
+            console.error({ error })
+        })
 
-        //POST api to-do
+        
     }
 
     componentDidMount() {
@@ -59,7 +88,7 @@ export default class SymptomLog extends Component {
     }
 
     render() {
-        
+        debugger
 
         return (
             <>
@@ -72,7 +101,7 @@ export default class SymptomLog extends Component {
                     <p>Generally, do you feel:</p>
                     {this.context.generalhealth.map(health =>
                         <div key={health.id}>
-                            <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.rating} className="overall-health-radio"/>
+                            <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.id} className="overall-health-radio"/>
                             <label htmlFor="overall-health">{health.rating}</label>
                         </div>
                     )}
@@ -93,10 +122,10 @@ export default class SymptomLog extends Component {
                         <div key={symptom.id}>
                         <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
                         <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom}>
-                            <option value="None">None</option>
-                            <option value="Mild">Mild</option>
-                            <option value="Moderate">Moderate</option>
-                            <option value="Severe">Severe</option>
+                            <option value="">None</option>
+                            <option value="1">Mild</option>
+                            <option value="2">Moderate</option>
+                            <option value="3">Severe</option>
                         </select>
                         <br/>
                         </div>

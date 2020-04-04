@@ -45,11 +45,12 @@ export default class SymptomLogDetail extends Component {
     render() {
         const logId = this.props.match.params.logId
         const log = this.state.log
+       
         
         if(log.length !==0) {
             return (
                 <div>
-                    <h2>On {log.date} you reported:</h2>
+                    <h2>On {log.header[0].date} you reported:</h2>
                     
                         <section>
                             <h4>Overall Health: {log.generalhealth.rating}</h4>
