@@ -120,7 +120,7 @@ export default class SymptomLogEdit extends Component {
                         <label htmlFor="overall-health"><h3>Overall Health</h3></label>
                         <p>Generally, do you feel:</p>
                         {this.context.generalhealth.map(health =>
-                            <div key={health.id}>
+                            <div key={`Health_${health.id}`}>
                                 <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.rating} defaultChecked={(health.id === this.state.currentlog.generalhealth[0].id) ? true : false} className="overall-health-radio"/>
                                 <label htmlFor="overall-health">{health.rating}</label>
                             </div>
@@ -129,7 +129,7 @@ export default class SymptomLogEdit extends Component {
                     <section className="form-section new-infection">
                         <h3>Since your last symptom log, have there been any of the following:</h3>
                         {this.context.newinfectionindicators.map(indicator =>
-                            <div key={indicator.id}>
+                            <div key={`Infection_${indicator.id}`}>
                                 <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
                                 <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
                                 <br/>
@@ -139,13 +139,14 @@ export default class SymptomLogEdit extends Component {
                     <section className="form-section symptoms">
                         <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>
                         {this.context.symptoms.map(symptom =>
-                            <div key={symptom.id}>
+                            <div key={`Symptom_${symptom.id}`}>
                             <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
-                            <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom} defaultValue={symptomEntries[symptom.id] || "none"}>
-                                <option value="none">None</option>
-                                <option value="mild">Mild</option>
-                                <option value="moderate">Moderate</option>
-                                <option value="severe">Severe</option>
+                            <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom} defaultValue={symptomEntries[symptom.id] || "None"}>
+                                {/* TO DO: resolve default symptom values; changed w/ API connection */}
+                                <option value="None">None</option>
+                                <option value="Mild">Mild</option>
+                                <option value="Moderate">Moderate</option>
+                                <option value="Severe">Severe</option>
                             </select>
                             <br/>
                             </div>

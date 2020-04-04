@@ -93,10 +93,10 @@ export default class SymptomLog extends Component {
                         <div key={symptom.id}>
                         <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
                         <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom}>
-                            <option value="none">None</option>
-                            <option value="mild">Mild</option>
-                            <option value="moderate">Moderate</option>
-                            <option value="severe">Severe</option>
+                            <option value="None">None</option>
+                            <option value="Mild">Mild</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Severe">Severe</option>
                         </select>
                         <br/>
                         </div>
