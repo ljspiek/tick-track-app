@@ -38,13 +38,13 @@ export default class SymptomLogDetail extends Component {
             if(!res.ok) {
                 return res.json().then(e => Promise.reject(e))
             } else {
-                return res.json()
+                return res
             }
           })
           .then((res) => {
-            //   this.context.deleteLog(logId)
-            //   this.props.onDeleteLog(logId)
-            //   this.props.history.push('/summary')
+              this.context.deleteLog(logId)
+              this.props.onDeleteLog(logId)
+              this.props.history.push('/summary')
             console.log(res)
           })
           .catch(error => {
