@@ -95,7 +95,7 @@ export default class SymptomLogEdit extends Component {
                 const symptomEntries = Object.fromEntries(
                     this.state.currentlog.symptoms.map(symptom => [
                         symptom.symptom_id,
-                        symptom.severity
+                        symptom.severity_id
                     ])
                 );
         
@@ -143,12 +143,12 @@ export default class SymptomLogEdit extends Component {
                         {this.context.symptoms.map(symptom =>
                             <div key={`Symptom_${symptom.id}`}>
                             <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
-                            <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom} defaultValue={symptomEntries[symptom.id] || "None"}>
+                            <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom} defaultValue={symptomEntries[symptom.id] || "1"}>
                                 {/* TO DO: resolve default symptom values; changed w/ API connection */}
-                                <option value="None">None</option>
-                                <option value="Mild">Mild</option>
-                                <option value="Moderate">Moderate</option>
-                                <option value="Severe">Severe</option>
+                                <option value="1">None</option>
+                                <option value="2">Mild</option>
+                                <option value="3">Moderate</option>
+                                <option value="4">Severe</option>
                             </select>
                             <br/>
                             </div>

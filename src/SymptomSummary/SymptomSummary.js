@@ -7,7 +7,8 @@ export default class SymptomSummary extends Component {
     static contextType = SymptomsContext
 
     state = {
-        symptomlog: []
+        symptomlog: [],
+        
     }
 
     componentDidMount() {
@@ -44,7 +45,7 @@ export default class SymptomSummary extends Component {
                             <h4>Overall Health: {data.generalhealth}</h4>
                             <h4>New Infection Indicators: {data.newinfections || 'None'}</h4>
                             <Link to={`/log/${data.id}`}><button>Details</button></Link>
-                            <button>Delete</button>
+                            
                         </section>
                         )}
                 </div>
