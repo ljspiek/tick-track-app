@@ -73,7 +73,7 @@ export default class SymptomLog extends Component {
         .then((data) => {
             this.props.history.push({
                 pathname: '/summary',
-                state: { detail: data}
+               
             })
         })
         .catch(error => {
@@ -88,8 +88,7 @@ export default class SymptomLog extends Component {
     }
 
     render() {
-        debugger
-
+        
         return (
             <>
             <h2>Symptom Log</h2>
@@ -122,10 +121,10 @@ export default class SymptomLog extends Component {
                         <div key={symptom.id}>
                         <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
                         <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom}>
-                            <option value="">None</option>
-                            <option value="1">Mild</option>
-                            <option value="2">Moderate</option>
-                            <option value="3">Severe</option>
+                            <option value="1">None</option>
+                            <option value="2">Mild</option>
+                            <option value="3">Moderate</option>
+                            <option value="4">Severe</option>
                         </select>
                         <br/>
                         </div>

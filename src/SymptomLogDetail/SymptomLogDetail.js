@@ -15,10 +15,42 @@ export default class SymptomLogDetail extends Component {
         },
         match: {
             params: {}
-        }
+        },
+        onDeleteLog: () => {},
     }
     
     static contextType = SymptomsContext
+
+    handleClickDelete = e => {
+        e.preventDefault()
+        const logId = this.props.match.params.logId
+        console.log(logId) 
+        fetch(`${config.API_ENDPOINT}/log/${logId}`, {
+            method: 'DELETE',
+            headers: {
+              'content-type': 'application/json',
+              'Authorization': `Bearer ${config.API_KEY}`,
+              'Access-Control-Allow-Origin': 'no-cors'
+            }
+          })
+          .then(res => {
+            
+            if(!res.ok) {
+                return res.json().then(e => Promise.reject(e))
+            } else {
+                return res.json()
+            }
+          })
+          .then((res) => {
+            //   this.context.deleteLog(logId)
+            //   this.props.onDeleteLog(logId)
+            //   this.props.history.push('/summary')
+            console.log(res)
+          })
+          .catch(error => {
+              console.error({ error })
+          })
+    }
 
     componentDidMount() {
         const logId = this.props.match.params.logId
@@ -53,7 +85,7 @@ export default class SymptomLogDetail extends Component {
                     <h2>On {log.header[0].date} you reported:</h2>
                     
                         <section>
-                            <h4>Overall Health: {log.generalhealth.rating}</h4>
+                            <h4>Overall Health: {log.generalhealth[0].rating}</h4>
                             {log.newinfectionindicators.length > 0 && 
                                 <h4>New Infection Indicators:</h4>
                             }
@@ -72,7 +104,7 @@ export default class SymptomLogDetail extends Component {
                             {/* TO DO:Make Close into 'x' at top */}
                             <Link to={{pathname:`/log/${logId}/edit`}}><button>Edit</button></Link>
                             {/* TO DO: Pencil icon - mobile only? */}
-                            <button>Delete</button>
+                            <button onClick={this.handleClickDelete}>Delete</button>
                         </section>
                         
                 </div>
