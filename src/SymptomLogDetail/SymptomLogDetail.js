@@ -96,7 +96,7 @@ export default class SymptomLogDetail extends Component {
                             )}
                             <h4>Symptoms:</h4>
                             {log.symptoms.map(symptoms =>
-                                <ul key={`${symptoms.log_id}${symptoms.symptom_id}`}>
+                                <ul key={`${symptoms.log_id}${symptoms.symptoms_id}`}>
                                     <li>{symptoms.symptom}: {symptoms.severity}</li>
                                 </ul>
                                 )}

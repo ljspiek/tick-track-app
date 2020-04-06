@@ -31,8 +31,11 @@ export default class SymptomLogEdit extends Component {
     handleMultipleSelections = (e) => {
         const selections = this.state.newinfectionindicators
         let filteredSelections = []
+        if(e.target.defaultChecked && !e.target.checked) {
+
+        }
         if(e.target.checked) {
-            const newSelections = selections.concat({id: e.target.id, indicator: e.target.value})
+            const newSelections = selections.concat({newinfectionindicators_id: e.target.id})
             filteredSelections = [...new Set(newSelections)]
         } else {
             filteredSelections = selections.filter(cb => e.target.value !== cb)
@@ -45,7 +48,7 @@ export default class SymptomLogEdit extends Component {
 
     handleSymptomSelections = (e) => {
         const symptoms = this.state.symptoms
-        const newSelections = {id: e.target.id, severity: e.target.value, symptom: e.target.name}
+        const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
         const newSymptoms = symptoms.concat(newSelections)
         this.setState({
             symptoms: newSymptoms
@@ -58,7 +61,7 @@ export default class SymptomLogEdit extends Component {
         const generalhealth = this.state.generalhealth
         const newinfectionindicators = this.state.newinfectionindicators
         const symptoms = this.state.symptoms
-        console.log(logDate, generalhealth, newinfectionindicators, symptoms)
+        console.log("LOGDATE:", logDate, "GENERALHEALTH_ID:", generalhealth, newinfectionindicators, symptoms)
         
 
         //POST api to-do
@@ -81,7 +84,11 @@ export default class SymptomLogEdit extends Component {
         })
         .then((res) => {
             this.setState({
-                currentlog: res
+                currentlog: res,
+                logDate: res.header[0].date,
+                generalhealth: res.generalhealth[0],
+                newinfectionindicators: res.newinfectionindicators,
+                symptoms: res.symptoms
             })
         })
     }
@@ -94,7 +101,7 @@ export default class SymptomLogEdit extends Component {
         if (log.length !== 0) {
                 const symptomEntries = Object.fromEntries(
                     this.state.currentlog.symptoms.map(symptom => [
-                        symptom.symptom_id,
+                        symptom.symptoms_id,
                         symptom.severity_id
                     ])
                 );
@@ -123,7 +130,7 @@ export default class SymptomLogEdit extends Component {
                         <p>Generally, do you feel:</p>
                         {this.context.generalhealth.map(health =>
                             <div key={`Health_${health.id}`}>
-                                <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.rating} defaultChecked={(health.id === this.state.currentlog.generalhealth[0].id) ? true : false} className="overall-health-radio"/>
+                                <input type="radio" onChange={(e) => {this.handleInputChange(e)}} id={health.id} name="generalhealth" value={health.id} defaultChecked={(health.id === this.state.currentlog.generalhealth[0].id) ? true : false} className="overall-health-radio"/>
                                 <label htmlFor="overall-health">{health.rating}</label>
                             </div>
                         )}
@@ -132,7 +139,7 @@ export default class SymptomLogEdit extends Component {
                         <h3>Since your last symptom log, have there been any of the following:</h3>
                         {this.context.newinfectionindicators.map(indicator =>
                             <div key={`Infection_${indicator.id}`}>
-                                <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
+                                <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
                                 <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
                                 <br/>
                             </div>
