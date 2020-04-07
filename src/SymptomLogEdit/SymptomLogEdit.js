@@ -49,7 +49,11 @@ export default class SymptomLogEdit extends Component {
     handleSymptomSelections = (e) => {
         const symptoms = this.state.symptoms
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
-        const newSymptoms = symptoms.concat(newSelections)
+        const filtered = symptoms.filter((item) => { 
+            return (item.symptoms_id===Number(e.target.id)) ? false : true ; 
+         } )
+        const newSymptoms = filtered.concat(newSelections)
+        // const newSymptoms = symptoms.concat(newSelections)
         this.setState({
             symptoms: newSymptoms
         })
