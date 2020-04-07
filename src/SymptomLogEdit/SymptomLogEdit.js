@@ -10,7 +10,9 @@ export default class SymptomLogEdit extends Component {
         logDate: "",
         generalhealth: "",
         newinfectionindicators: [],
-        symptoms: []
+        symptoms: [],
+        changedSymp: [],
+        newSymp: []
     }
 
     static defaultProps = {
@@ -47,16 +49,28 @@ export default class SymptomLogEdit extends Component {
     }
 
     handleSymptomSelections = (e) => {
+        let chgSymps = []
+        let newSymps = []
         const symptoms = this.state.symptoms
+        const changedSymp = this.state.changedSymp
+        const newSymp = this.state.newSymp
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
-        const filtered = symptoms.filter((item) => { 
-            return (item.symptoms_id===Number(e.target.id)) ? false : true ; 
-         } )
-        const newSymptoms = filtered.concat(newSelections)
-        // const newSymptoms = symptoms.concat(newSelections)
-        this.setState({
-            symptoms: newSymptoms
+        const filteredChg = changedSymp.filter((item) => {
+            return (item.symptoms_id === Number(e.target.id)) ? true : false ;
         })
+        const filteredNew = newSymp.filter((item) => {
+            return (item.symptoms_id === Number(e.target.id)) ? true : false ;
+        })
+        if(symptoms.some(symptom => symptom.symptoms_id === Number(e.target.id))) {
+            chgSymps = filteredChg.concat(newSelections)
+        } else {
+            newSymps = filteredNew.concat(newSelections)
+        }
+        this.setState({
+            changedSymp: chgSymps,
+            newSymp: newSymps
+        })
+        
     }
 
     handleSubmit = (e) => {
@@ -65,7 +79,11 @@ export default class SymptomLogEdit extends Component {
         const generalhealth = this.state.generalhealth
         const newinfectionindicators = this.state.newinfectionindicators
         const symptoms = this.state.symptoms
+        const changed = this.state.changedSymp
+        const newsymp = this.state.newSymp
+       
         console.log("LOGDATE:", logDate, "GENERALHEALTH_ID:", generalhealth, newinfectionindicators, symptoms)
+        console.log("CHANGED:", changed, "NEW:", newsymp)
         
 
         //POST api to-do
