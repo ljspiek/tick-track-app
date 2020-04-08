@@ -105,8 +105,10 @@ export default class SymptomLog extends Component {
                     <p>Generally, do you feel:</p>
                     {this.context.generalhealth.map(health =>
                         <div key={health.id}>
-                            <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.id} className="overall-health-radio"/>
-                            <label htmlFor="overall-health">{health.rating}</label>
+                            <label>
+                                <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.id} className="overall-health-radio"/>
+                                {health.rating}
+                            </label>
                         </div>
                     )}
                 </section>
@@ -114,8 +116,10 @@ export default class SymptomLog extends Component {
                     <h3>Since your last symptom log, have there been any of the following:</h3>
                     {this.context.newinfectionindicators.map(indicator =>
                         <div key={indicator.id}>
-                            <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator}/>
-                            <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
+                            <label>
+                                <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator}/>
+                                {indicator.indicator}
+                            </label>
                             <br/>
                         </div>
                     )}

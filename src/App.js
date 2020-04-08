@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route, Switch, Link} from 'react-router-dom';
+import tick from './tick.png'
 import LandingPage from './LandingPage/LandingPage'
 import Nav from './Nav/Nav'
 import SymptomLog from './SymptomLog/SymptomLog'
@@ -87,13 +88,13 @@ class App extends Component {
 
     }
 
-    // console.log("CONTEXT VALUE:", contextValue)
+      console.log(tick)
 
     return (
       <div className='App'>
         <Nav/>
         <header>
-          <Link to='/'><h1 className='app-name'>TickTrack</h1></Link>
+          <Link to='/'><h1 className='app-name'>TickTrack<img className="logo" src={tick} alt="logo" /></h1></Link>
           <h2>Take control of your Lyme, one day at a time.</h2>
         </header>
         
