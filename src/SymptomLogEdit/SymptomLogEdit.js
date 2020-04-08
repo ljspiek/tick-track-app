@@ -82,7 +82,7 @@ export default class SymptomLogEdit extends Component {
         const newsymp = this.state.newSymp
         const logId = this.props.match.params.logId
         const chgLog = {
-            
+
             date_created: logDate,
             general_health_id: generalhealth,
             symptoms: changed
@@ -178,8 +178,10 @@ export default class SymptomLogEdit extends Component {
                         <p>Generally, do you feel:</p>
                         {this.context.generalhealth.map(health =>
                             <div key={`Health_${health.id}`}>
-                                <input type="radio" onChange={(e) => {this.handleInputChange(e)}} id={health.id} name="generalhealth" value={health.id} defaultChecked={(health.id === this.state.currentlog.generalhealth[0].id) ? true : false} className="overall-health-radio"/>
-                                <label htmlFor="overall-health">{health.rating}</label>
+                                <label>
+                                    <input type="radio" onChange={(e) => {this.handleInputChange(e)}} id={health.id} name="generalhealth" value={health.id} defaultChecked={(health.id === this.state.currentlog.generalhealth[0].id) ? true : false} className="overall-health-radio"/>
+                                    {health.rating}
+                                </label>
                             </div>
                         )}
                     </section>
@@ -187,8 +189,10 @@ export default class SymptomLogEdit extends Component {
                         <h3>Since your last symptom log, have there been any of the following:</h3>
                         {this.context.newinfectionindicators.map(indicator =>
                             <div key={`Infection_${indicator.id}`}>
-                                <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
-                                <label htmlFor={indicator.indicator}>{indicator.indicator}</label>
+                                <label>
+                                    <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
+                                    {indicator.indicator}
+                                </label>
                                 <br/>
                             </div>
                         )}
