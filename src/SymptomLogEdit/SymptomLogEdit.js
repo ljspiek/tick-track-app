@@ -76,17 +76,43 @@ export default class SymptomLogEdit extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const logDate = this.state.logDate
-        const generalhealth = this.state.generalhealth
+        const generalhealth = this.state.generalhealth.id
         const newinfectionindicators = this.state.newinfectionindicators
-        const symptoms = this.state.symptoms
         const changed = this.state.changedSymp
         const newsymp = this.state.newSymp
-       
-        console.log("LOGDATE:", logDate, "GENERALHEALTH_ID:", generalhealth, newinfectionindicators, symptoms)
-        console.log("CHANGED:", changed, "NEW:", newsymp)
-        
+        const logId = this.props.match.params.logId
+        const chgLog = {
+            
+            date_created: logDate,
+            general_health_id: generalhealth,
+            symptoms: changed
+        }
+        console.log(chgLog)
+        const addtl = {
+            symptoms: newsymp
+        }
+        fetch(`${config.API_ENDPOINT}/log/${logId}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_KEY}`,
+                'Access-Control-Allow-Origin': 'no-cors'
+            },
+            body: JSON.stringify(chgLog),
+        })
+        .then(res => {
+            if(!res.ok)
+                return res.json().then(e => Promise.reject(e))
+                return res.json()
+        })
+        .then((data) => {
+            this.props.history.push({
+                pathname: '/summary'
+            })
+        })
 
-        //POST api to-do
+       
+       
     }
 
     componentDidMount() {

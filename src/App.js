@@ -93,7 +93,7 @@ class App extends Component {
       <div className='App'>
         <Nav/>
         <header>
-          <Link to='/'><h1>TickTrack</h1></Link>
+          <Link to='/'><h1 className='app-name'>TickTrack</h1></Link>
           <h2>Take control of your Lyme, one day at a time.</h2>
         </header>
         
