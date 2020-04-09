@@ -56,10 +56,10 @@ export default class SymptomLogEdit extends Component {
         const newSymp = this.state.newSymp
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
         const filteredChg = changedSymp.filter((item) => {
-            return (item.symptoms_id === Number(e.target.id)) ? true : false ;
+            return (item.symptoms_id === e.target.id) ? false : true ;
         })
         const filteredNew = newSymp.filter((item) => {
-            return (item.symptoms_id === Number(e.target.id)) ? true : false ;
+            return (item.symptoms_id === e.target.id) ? true : false ;
         })
         if(symptoms.some(symptom => symptom.symptoms_id === Number(e.target.id))) {
             chgSymps = filteredChg.concat(newSelections)
@@ -87,29 +87,31 @@ export default class SymptomLogEdit extends Component {
             general_health_id: generalhealth,
             symptoms: changed
         }
-        console.log(chgLog)
+        console.log("CHANGES:", changed)
+        console.log("NEW:", newsymp)
+
         const addtl = {
             symptoms: newsymp
         }
-        fetch(`${config.API_ENDPOINT}/log/${logId}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json',
-                'Authorization': `Bearer ${config.API_KEY}`,
-                'Access-Control-Allow-Origin': 'no-cors'
-            },
-            body: JSON.stringify(chgLog),
-        })
-        .then(res => {
-            if(!res.ok)
-                return res.json().then(e => Promise.reject(e))
-                return res.json()
-        })
-        .then((data) => {
-            this.props.history.push({
-                pathname: '/summary'
-            })
-        })
+        // fetch(`${config.API_ENDPOINT}/log/${logId}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'content-type': 'application/json',
+        //         'Authorization': `Bearer ${config.API_KEY}`,
+        //         'Access-Control-Allow-Origin': 'no-cors'
+        //     },
+        //     body: JSON.stringify(chgLog),
+        // })
+        // .then(res => {
+        //     if(!res.ok)
+        //         return res.json().then(e => Promise.reject(e))
+        //         return res.json()
+        // })
+        // .then((data) => {
+        //     this.props.history.push({
+        //         pathname: '/summary'
+        //     })
+        // })
 
        
        
