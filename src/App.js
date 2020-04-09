@@ -88,7 +88,7 @@ class App extends Component {
 
     }
 
-      console.log(tick)
+     
 
     return (
       <div className='App'>
