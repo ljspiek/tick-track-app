@@ -55,16 +55,23 @@ export default class SymptomLogEdit extends Component {
         const changedSymp = this.state.changedSymp
         const newSymp = this.state.newSymp
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
+
         const filteredChg = changedSymp.filter((item) => {
             return (item.symptoms_id === Number(e.target.id)) ? true : false ;
         })
+        
+
         const filteredNew = newSymp.filter((item) => {
             return (item.symptoms_id === Number(e.target.id)) ? true : false ;
         })
+       
+        
         if(symptoms.some(symptom => symptom.symptoms_id === Number(e.target.id))) {
             chgSymps = filteredChg.concat(newSelections)
+            console.log(chgSymps)
         } else {
             newSymps = filteredNew.concat(newSelections)
+            console.log(newSymps)
         }
         this.setState({
             changedSymp: chgSymps,
@@ -103,9 +110,9 @@ export default class SymptomLogEdit extends Component {
         .then(res => {
             if(!res.ok)
                 return res.json().then(e => Promise.reject(e))
-                return res.json()
+                
         })
-        .then((data) => {
+        .then(() => {
             this.props.history.push({
                 pathname: '/summary'
             })
@@ -153,6 +160,13 @@ export default class SymptomLogEdit extends Component {
                         symptom.severity_id
                     ])
                 );
+
+                const symptomIds = Object.fromEntries(
+                    this.state.currentlog.symptoms.map(symptom => [
+                        symptom.symptoms_id,
+                        symptom.id
+                    ])
+                )
         
                 const newInfections = Object.fromEntries(
                     this.state.currentlog.newinfectionindicators.map(infections => [
@@ -202,7 +216,7 @@ export default class SymptomLogEdit extends Component {
                         {this.context.symptoms.map(symptom =>
                             <div key={`Symptom_${symptom.id}`}>
                             <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
-                            <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom} defaultValue={symptomEntries[symptom.id] || "1"}>
+                            <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name ={symptomIds[symptom.id] || symptom.id} defaultValue={symptomEntries[symptom.id] || "1"}>
                                 {/* TO DO: resolve default symptom values; changed w/ API connection */}
                                 <option value="1">None</option>
                                 <option value="2">Mild</option>
