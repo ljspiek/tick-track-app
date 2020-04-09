@@ -38,7 +38,7 @@ export default class SymptomLog extends Component {
         const symptoms = this.state.symptoms
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
         const filtered = symptoms.filter((item) => { 
-            return (item.symptoms_id===Number(e.target.id)) ? true : false ; 
+            return (item.symptoms_id===e.target.id) ? false : true ; 
          } )
         const newSymptoms = filtered.concat(newSelections)
         // const newSymptoms = symptoms.concat(newSelections)
