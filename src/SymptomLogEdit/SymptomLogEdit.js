@@ -57,12 +57,12 @@ export default class SymptomLogEdit extends Component {
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
 
         const filteredChg = changedSymp.filter((item) => {
-            return (item.symptoms_id === Number(e.target.id)) ? true : false ;
+            return (item.symptoms_id === e.target.id) ? false : true ;
         })
         
 
         const filteredNew = newSymp.filter((item) => {
-            return (item.symptoms_id === Number(e.target.id)) ? true : false ;
+            return (item.symptoms_id === e.target.id) ? true : false ;
         })
        
         
@@ -94,10 +94,13 @@ export default class SymptomLogEdit extends Component {
             general_health_id: generalhealth,
             symptoms: changed
         }
-        console.log(chgLog)
+        console.log("CHANGES:", changed)
+        console.log("NEW:", newsymp)
+
         const addtl = {
             symptoms: newsymp
         }
+<<<<<<< HEAD
         fetch(`${config.API_ENDPOINT}/log/${logId}`, {
             method: 'PATCH',
             headers: {
@@ -117,6 +120,27 @@ export default class SymptomLogEdit extends Component {
                 pathname: '/summary'
             })
         })
+=======
+        // fetch(`${config.API_ENDPOINT}/log/${logId}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'content-type': 'application/json',
+        //         'Authorization': `Bearer ${config.API_KEY}`,
+        //         'Access-Control-Allow-Origin': 'no-cors'
+        //     },
+        //     body: JSON.stringify(chgLog),
+        // })
+        // .then(res => {
+        //     if(!res.ok)
+        //         return res.json().then(e => Promise.reject(e))
+        //         return res.json()
+        // })
+        // .then((data) => {
+        //     this.props.history.push({
+        //         pathname: '/summary'
+        //     })
+        // })
+>>>>>>> cf7c59195308615e346c6424320e4ae015c3e210
 
        
        

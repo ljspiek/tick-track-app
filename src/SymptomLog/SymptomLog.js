@@ -38,7 +38,7 @@ export default class SymptomLog extends Component {
         const symptoms = this.state.symptoms
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
         const filtered = symptoms.filter((item) => { 
-            return (item.symptoms_id===Number(e.target.id)) ? true : false ; 
+            return (item.symptoms_id===e.target.id) ? false : true ; 
          } )
         const newSymptoms = filtered.concat(newSelections)
         // const newSymptoms = symptoms.concat(newSelections)
@@ -101,7 +101,7 @@ export default class SymptomLog extends Component {
                 <section className="form-section overall-health">
                     <label htmlFor="log-date">Date:</label>
                     <input onChange={(e) => {this.handleInputChange(e)}} value={this.state.logDate} type="date" id="log-date" name="logDate" ref={(a) => this.uncontrolInput = a}/>
-                    <label htmlFor="overall-health"><h3>Overall Health</h3></label>
+                    <label><h3>Overall Health</h3></label>
                     <p>Generally, do you feel:</p>
                     {this.context.generalhealth.map(health =>
                         <div key={health.id}>
@@ -128,7 +128,7 @@ export default class SymptomLog extends Component {
                     <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>
                     {this.context.symptoms.map(symptom =>
                         <div key={symptom.id}>
-                        <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
+                        <label>{symptom.symptom}</label>
                         <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom}>
                             <option value="1">None</option>
                             <option value="2">Mild</option>
