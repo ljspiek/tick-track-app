@@ -55,6 +55,7 @@ export default class SymptomLogEdit extends Component {
         const changedSymp = this.state.changedSymp
         const newSymp = this.state.newSymp
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
+        const chgSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
 
         const filteredChg = changedSymp.filter((item) => {
             return (item.symptoms_id === e.target.id) ? false : true ;
@@ -62,22 +63,25 @@ export default class SymptomLogEdit extends Component {
         
 
         const filteredNew = newSymp.filter((item) => {
-            return (item.symptoms_id === e.target.id) ? true : false ;
+            return (item.symptoms_id === e.target.id) ? false : true ;
         })
        
         
         if(symptoms.some(symptom => symptom.symptoms_id === Number(e.target.id))) {
-            chgSymps = filteredChg.concat(newSelections)
-            console.log(chgSymps)
-        } else {
-            newSymps = filteredNew.concat(newSelections)
-            console.log(newSymps)
-        }
-        this.setState({
-            changedSymp: chgSymps,
-            newSymp: newSymps
-        })
+            chgSymps = filteredChg.concat(chgSelections)
+            this.setState({
+                changedSymp:chgSymps
+            })    
+        } 
         
+        else {
+            newSymps = filteredNew.concat(newSelections)
+            this.setState({
+                newSymp: newSymps
+            })
+           
+        }
+      
     }
 
     handleSubmit = (e) => {
@@ -100,27 +104,6 @@ export default class SymptomLogEdit extends Component {
         const addtl = {
             symptoms: newsymp
         }
-<<<<<<< HEAD
-        fetch(`${config.API_ENDPOINT}/log/${logId}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json',
-                'Authorization': `Bearer ${config.API_KEY}`,
-                'Access-Control-Allow-Origin': 'no-cors'
-            },
-            body: JSON.stringify(chgLog),
-        })
-        .then(res => {
-            if(!res.ok)
-                return res.json().then(e => Promise.reject(e))
-                
-        })
-        .then(() => {
-            this.props.history.push({
-                pathname: '/summary'
-            })
-        })
-=======
         // fetch(`${config.API_ENDPOINT}/log/${logId}`, {
         //     method: 'PATCH',
         //     headers: {
@@ -133,14 +116,13 @@ export default class SymptomLogEdit extends Component {
         // .then(res => {
         //     if(!res.ok)
         //         return res.json().then(e => Promise.reject(e))
-        //         return res.json()
+                
         // })
-        // .then((data) => {
+        // .then(() => {
         //     this.props.history.push({
         //         pathname: '/summary'
         //     })
         // })
->>>>>>> cf7c59195308615e346c6424320e4ae015c3e210
 
        
        
