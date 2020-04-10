@@ -90,13 +90,13 @@ export default class SymptomLogDetail extends Component {
                                 <h4>New Infection Indicators:</h4>
                             }
                             {log.newinfectionindicators.map(indicators =>
-                                <ul key={`${indicators.log_id}${indicators.infection_id}`}>
+                                <ul key={`Indicators_${indicators.log_id}${indicators.infection_id}`}>
                                     <li>{indicators.indicator}</li>
                                 </ul>
                             )}
                             <h4>Symptoms:</h4>
                             {log.symptoms.map(symptoms =>
-                                <ul key={`${symptoms.log_id}${symptoms.symptoms_id}`}>
+                                <ul key={`Symptoms_${symptoms.log_id}${symptoms.symptoms_id}`}>
                                     <li>{symptoms.symptom}: {symptoms.severity}</li>
                                 </ul>
                                 )}

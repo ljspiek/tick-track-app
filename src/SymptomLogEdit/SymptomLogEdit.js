@@ -12,7 +12,9 @@ export default class SymptomLogEdit extends Component {
         newinfectionindicators: [],
         symptoms: [],
         changedSymp: [],
-        newSymp: []
+        newSymp: [],
+        removeInf: [],
+        newInf: []
     }
 
     static defaultProps = {
@@ -31,22 +33,28 @@ export default class SymptomLogEdit extends Component {
     }
 
     handleMultipleSelections = (e) => {
-        const selections = this.state.newinfectionindicators
-        let selected = {newinfectionindicators_id: e.target.id}
+        const selections = this.state.newInf
+        
         let filteredSelections = []
 
-        if(selections.some(select => select.newinfectionindicators_id === e.target.id)) {
-            
+        let removed = []
+        if(e.target.defaultChecked) {
+            removed.push({id: e.target.name})
+            this.setState({
+                removeInf: removed
+            })
         }
-        
+
+                
         if(e.target.checked) {
             const newSelections = selections.concat({newinfectionindicators_id: e.target.id})
             filteredSelections = [...new Set(newSelections)]
-        } else {
-            filteredSelections = selections.filter(cb => e.target.value !== cb)
+        } 
+        else {
+            filteredSelections = selections.filter(cb => cb.newinfectionindicators_id !== e.target.id )
         }
         this.setState({
-            newinfectionindicators: filteredSelections
+            newInf: filteredSelections
         })
         
     }
@@ -161,6 +169,7 @@ export default class SymptomLogEdit extends Component {
 
         
         const log = this.state.currentlog
+
         if (log.length !== 0) {
                 const symptomEntries = Object.fromEntries(
                     this.state.currentlog.symptoms.map(symptom => [
@@ -179,7 +188,7 @@ export default class SymptomLogEdit extends Component {
                 const newInfections = Object.fromEntries(
                     this.state.currentlog.newinfectionindicators.map(infections => [
                         infections.infection_id,
-                        infections.indicator,
+                        infections.id,
                     ])
                 );
 
@@ -212,7 +221,7 @@ export default class SymptomLogEdit extends Component {
                         {this.context.newinfectionindicators.map(indicator =>
                             <div key={`Infection_${indicator.id}`}>
                                 <label>
-                                    <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
+                                    <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} name ={newInfections[indicator.id] || indicator.id} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
                                     {indicator.indicator}
                                 </label>
                                 <br/>
