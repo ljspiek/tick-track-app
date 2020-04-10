@@ -55,7 +55,7 @@ export default class SymptomLogEdit extends Component {
         const changedSymp = this.state.changedSymp
         const newSymp = this.state.newSymp
         const newSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
-        const chgSelections = {symptoms_id: e.target.id, severity_id: e.target.value}
+        const chgSelections = {id: e.target.name, symptoms_id: e.target.id, severity_id: e.target.value}
 
         const filteredChg = changedSymp.filter((item) => {
             return (item.symptoms_id === e.target.id) ? false : true ;
@@ -104,25 +104,25 @@ export default class SymptomLogEdit extends Component {
         const addtl = {
             symptoms: newsymp
         }
-        // fetch(`${config.API_ENDPOINT}/log/${logId}`, {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'content-type': 'application/json',
-        //         'Authorization': `Bearer ${config.API_KEY}`,
-        //         'Access-Control-Allow-Origin': 'no-cors'
-        //     },
-        //     body: JSON.stringify(chgLog),
-        // })
-        // .then(res => {
-        //     if(!res.ok)
-        //         return res.json().then(e => Promise.reject(e))
+        fetch(`${config.API_ENDPOINT}/log/${logId}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_KEY}`,
+                'Access-Control-Allow-Origin': 'no-cors'
+            },
+            body: JSON.stringify(chgLog),
+        })
+        .then(res => {
+            if(!res.ok)
+                return res.json().then(e => Promise.reject(e))
                 
-        // })
-        // .then(() => {
-        //     this.props.history.push({
-        //         pathname: '/summary'
-        //     })
-        // })
+        })
+        .then(() => {
+            this.props.history.push({
+                pathname: '/summary'
+            })
+        })
 
        
        
