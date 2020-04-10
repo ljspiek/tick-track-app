@@ -35,7 +35,7 @@ class App extends Component {
         }
       }),
       fetch(`${config.API_ENDPOINT}/log`, {
-         'content-type': 'application/json',
+          'content-type': 'application/json',
           'Authorization': `Bearer ${config.API_KEY}`,
           'Access-Control-Allow-Origin': 'no-cors'
       })
@@ -47,7 +47,7 @@ class App extends Component {
         return logRes.json().then(e => Promise.reject(e));
     return Promise.all([fieldsRes.json(), logRes.json()]);
     })
-    .then(([fields,log]) => {
+    .then(([fields, log]) => {
       this.setState({
         newinfectionindicators: fields.newinfectionindicators,
         generalhealth: fields.generalhealth,

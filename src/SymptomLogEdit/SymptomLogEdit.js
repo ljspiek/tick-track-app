@@ -34,23 +34,20 @@ export default class SymptomLogEdit extends Component {
 
     handleMultipleSelections = (e) => {
         const selections = this.state.newInf
-        
         let filteredSelections = []
-
         let removed = []
+
         if(e.target.defaultChecked) {
             removed.push({id: e.target.name})
             this.setState({
                 removeInf: removed
             })
         }
-
                 
         if(e.target.checked) {
             const newSelections = selections.concat({newinfectionindicators_id: e.target.id})
             filteredSelections = [...new Set(newSelections)]
-        } 
-        else {
+        } else {
             filteredSelections = selections.filter(cb => cb.newinfectionindicators_id !== e.target.id )
         }
         this.setState({
@@ -99,7 +96,8 @@ export default class SymptomLogEdit extends Component {
         e.preventDefault()
         const logDate = this.state.logDate
         const generalhealth = this.state.generalhealth.id
-        const newinfectionindicators = this.state.newinfectionindicators
+        const newInf = this.state.newInf
+        const removeInf = this.state.removeInf
         const changed = this.state.changedSymp
         const newsymp = this.state.newSymp
         const logId = this.props.match.params.logId
@@ -107,13 +105,15 @@ export default class SymptomLogEdit extends Component {
 
             date_created: logDate,
             general_health_id: generalhealth,
-            symptoms: changed
+            symptomschg: changed,
+            symptomsnew: newsymp,
+            newinfectionindicators: newInf,
+            deletedinfs: removeInf
         }
        
+        console.log(chgLog)
+        
 
-        const addtl = {
-            symptoms: newsymp
-        }
         fetch(`${config.API_ENDPOINT}/log/${logId}`, {
             method: 'PATCH',
             headers: {
