@@ -26,7 +26,7 @@ export default class SymptomLog extends Component {
             const newSelections = selections.concat({newinfectionindicators_id: e.target.id})
             filteredSelections = [...new Set(newSelections)]
         } else {
-            filteredSelections = selections.filter(cb => e.target.value !== cb)
+            filteredSelections = selections.filter(cb => cb.newinfectionindicators_id !== e.target.id )
         }
         this.setState({
             newinfectionindicators: filteredSelections

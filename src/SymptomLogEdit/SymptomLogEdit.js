@@ -32,10 +32,13 @@ export default class SymptomLogEdit extends Component {
 
     handleMultipleSelections = (e) => {
         const selections = this.state.newinfectionindicators
+        let selected = {newinfectionindicators_id: e.target.id}
         let filteredSelections = []
-        if(e.target.defaultChecked && !e.target.checked) {
 
+        if(selections.some(select => select.newinfectionindicators_id === e.target.id)) {
+            
         }
+        
         if(e.target.checked) {
             const newSelections = selections.concat({newinfectionindicators_id: e.target.id})
             filteredSelections = [...new Set(newSelections)]
@@ -98,8 +101,7 @@ export default class SymptomLogEdit extends Component {
             general_health_id: generalhealth,
             symptoms: changed
         }
-        console.log("CHANGES:", changed)
-        console.log("NEW:", newsymp)
+       
 
         const addtl = {
             symptoms: newsymp
