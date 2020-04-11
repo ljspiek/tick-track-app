@@ -5,9 +5,16 @@ import './nav.css'
 
 
 export default class Nav extends Component {
-  
+
+  state = {
+    loggedIn: true
+  }
+
   handleSignOutClick = () => {
     TokenService.clearAuthToken()
+    this.setState({
+      loggedIn: false
+    })
   }
 
   renderSignOutLink() {
@@ -41,7 +48,7 @@ export default class Nav extends Component {
   render() {
     return (
         <nav>
-         {TokenService.hasAuthToken()
+         {(this.state.loggedIn === true)
           ? this.renderSignOutLink()
           : this.renderSignInLink()}
         </nav>
