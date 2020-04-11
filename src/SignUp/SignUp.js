@@ -18,9 +18,9 @@ export default class SignUp extends Component {
             email: email,
             password: password
         })
-        .then(user => {
-            email.value =''
-            password.value=''
+        .then(() => {
+            // email.value =''
+            // password.value=''
             this.props.onRegistrationSuccess()
         })
         .catch(res => {

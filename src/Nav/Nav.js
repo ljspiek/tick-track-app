@@ -1,21 +1,50 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import TokenService from '../services/token-service'
 import './nav.css'
-import tick from '../tick.png'
 
-export default function Nav() {
+
+export default class Nav extends Component {
+  
+  handleSignOutClick = () => {
+    TokenService.clearAuthToken()
+  }
+
+  renderSignOutLink() {
+    return (
+      <div>
+        <Link
+        onClick={this.handleSignOutClick}
+        to='/'>
+          Sign Out
+        </Link>
+      </div>
+    )
+  }
+
+  renderSignInLink() {
+    return (
+      <div>
+        <Link
+        to='/signin'>
+          Sign In
+        </Link>
+        <Link
+        to='/signup'>
+          Sign Up
+        </Link>
+      </div>
+    )
+  }
+
+
+  render() {
     return (
         <nav>
-         <ul>
-           <li><Link to='/signup'>Sign Up</Link></li>
-           <li><Link to='/signin'>Sign In</Link></li>
-           {/* <li><Link to='/'><img className="logo" src={tick} alt="logo" /></Link></li> */}
-         </ul>
-         
-          
-          
-          
-          
+         {TokenService.hasAuthToken()
+          ? this.renderSignOutLink()
+          : this.renderSignInLink()}
         </nav>
     )
+  }
 }

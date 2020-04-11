@@ -14,6 +14,7 @@ import SymptomsContext from './SymptomsContext'
 import config from './config';
 import PrivateRoute from './Utilities/PrivateRoute'
 import PublicRoute from './Utilities/PublicRoute'
+import TokenService from './services/token-service';
 
 
 
@@ -38,7 +39,7 @@ class App extends Component {
       }),
       fetch(`${config.API_ENDPOINT}/log`, {
           'content-type': 'application/json',
-          'Authorization': `Bearer ${config.API_KEY}`,
+          'Authorization': `Bearer ${TokenService.getAuthToken()}`,
           'Access-Control-Allow-Origin': 'no-cors'
       })
     ])
@@ -94,8 +95,8 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Nav/>
         <header>
+          <Nav/>
           <Link to='/'><h1 className='app-name'>TickTrack<img className="logo" src={tick} alt="logo" /></h1></Link>
           <h2>Take control of your Lyme, one day at a time.</h2>
         </header>

@@ -14,6 +14,7 @@ export default class SignIn extends Component {
     handleSubmitJwtAuth = e => {
         e.preventDefault()
         this.setState({ error: null })
+        
         const email = e.target.elements[1].value
         const password = e.target.elements[2].value
 
@@ -21,15 +22,14 @@ export default class SignIn extends Component {
             email: email,
             password: password
         })
-        .then(res => {
-            email = ''
-            password = ''
-            TokenService.saveAuthToken(res.authToken)
-            this.props.onLoginSuccess()
-        })
-        .catch(res => {
-            this.setState({ error: res.error })
-        })
+            .then(res => {
+                
+                TokenService.saveAuthToken(res.authToken)
+                this.props.onLoginSuccess()
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
 
     render() {
