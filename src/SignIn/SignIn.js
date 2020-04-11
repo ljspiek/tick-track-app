@@ -32,7 +32,7 @@ export default class SignIn extends Component {
                 
                 TokenService.saveAuthToken(res.authToken)
                 this.props.onLoginSuccess()
-                // this.context.updateLogin()
+                this.context.updateLogin()
             })
             .catch(res => {
                 this.setState({ error: res.error })

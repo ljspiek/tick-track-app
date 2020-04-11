@@ -8,11 +8,15 @@ import './nav.css'
 export default class Nav extends Component {
   static contextType = SymptomsContext
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedIn: true
-    };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     loggedIn: true
+  //   };
+  // }
+
+  state = {
+    loggedIn: this.context.loggedIn
   }
 
   
@@ -20,7 +24,7 @@ export default class Nav extends Component {
 
   handleSignOutClick = () => {
     TokenService.clearAuthToken()
-    // this.context.updateLogin()
+    this.context.updateLogin()
     this.setState({
       loggedIn: false
     })
@@ -55,30 +59,29 @@ export default class Nav extends Component {
 
   componentDidMount() {
     this.setState({
-      loggedIn: TokenService.hasAuthToken()
+      loggedIn: this.context.loggedIn
     })
   }
-
-
+  
+  
   render() {
-    const loggedIn = this.state.loggedIn
+    console.log('STATE:', this.state)
+    console.log('CONTEXT', this.context.loggedIn)
+    const loggedIn = this.context.loggedIn
 
-    if(loggedIn) {
-      console.log("RENDER:", this.state.loggedIn)
+    if(loggedIn === true) {
+      console.log("TRUE")
       return (
           <nav>
-           {this.state.loggedIn
-            ? this.renderSignOutLink()
-            : this.renderSignInLink()}
+           {this.renderSignOutLink()}
           </nav>
       )
 
-    } else {
+    } 
+    if(loggedIn === false) {
       return(
         <nav>
-        {this.state.loggedIn
-         ? this.renderSignOutLink()
-         : this.renderSignInLink()}
+        {this.renderSignInLink()}
        </nav>
       )
     }
