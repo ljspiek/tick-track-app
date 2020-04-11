@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import TokenService from '../services/token-service'
 import AuthApiService from '../services/auth-api-service'
+import SymptomsContext from '../SymptomsContext'
 
 
 export default class SignIn extends Component {
+    static contextType = SymptomsContext
+
     static defaultProps = {
         onLoginSuccess: () => {}
     }
 
-    state = { error: null }
+    state = { 
+        error: null,
+        loggedIn: this.context.loggedIn
+    }
 
    
     handleSubmitJwtAuth = e => {
@@ -26,6 +32,7 @@ export default class SignIn extends Component {
                 
                 TokenService.saveAuthToken(res.authToken)
                 this.props.onLoginSuccess()
+                // this.context.updateLogin()
             })
             .catch(res => {
                 this.setState({ error: res.error })

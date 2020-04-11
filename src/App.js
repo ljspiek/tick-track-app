@@ -24,7 +24,8 @@ class App extends Component {
     symptomlog: [],
     newinfectionindicators: [],
     generalhealth: [],
-    symptoms: []
+    symptoms: [],
+    loggedIn: TokenService.hasAuthToken()
   };
 
   componentDidMount() {
@@ -76,6 +77,18 @@ class App extends Component {
     })
   }
 
+  updateLogIn = () => {
+    if(TokenService.hasAuthToken()){
+      this.setState({
+        loggedIn: true
+      })
+    } else {
+      this.setState({
+        loggedIn: false
+      })
+    }
+  }
+
   render() {
 
     
@@ -88,6 +101,8 @@ class App extends Component {
       deleteLog: this.deleteLog,
       addLog: this.addLog,
       currentlog: [],
+      loggedIn: this.state.loggedIn,
+      updateLogin: this.updateLogIn
 
     }
 
@@ -95,49 +110,49 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <header>
-          <Nav/>
-          <Link to='/'><h1 className='app-name'>TickTrack<img className="logo" src={tick} alt="logo" /></h1></Link>
-          <h2>Take control of your Lyme, one day at a time.</h2>
-        </header>
-        
-      <main >
         <SymptomsContext.Provider value={contextValue}>
-          <Switch>
-            <Route 
-              exact path='/'
-              component={LandingPage}
-            />
-            <PrivateRoute
-              exact path='/log'
-              component={SymptomLog}
-            />
-            <PrivateRoute
-              exact path='/summary'
-              component={SymptomSummary}
-            />
-            <PrivateRoute
-              exact path='/log/:logId'
-              component={SymptomLogDetail}
-            />
-            <PrivateRoute
-              exact path='/log/:logId/edit'
-              component={SymptomLogEdit}
-            />
-            <PublicRoute
-              exact path='/signUp'
-              component={SignUpPage}
-            />
-            <PublicRoute
-              exact path='/signIn'
-              component={SignInPage}
-            />
-            <Route
-              component={NotFound}
-            />
-          </Switch>
+          <header>
+            <Nav/>
+            <Link to='/'><h1 className='app-name'>TickTrack<img className="logo" src={tick} alt="logo" /></h1></Link>
+            <h2>Take control of your Lyme, one day at a time.</h2>
+          </header>
+        
+          <main >
+              <Switch>
+                <Route 
+                  exact path='/'
+                  component={LandingPage}
+                />
+                <PrivateRoute
+                  exact path='/log'
+                  component={SymptomLog}
+                />
+                <PrivateRoute
+                  exact path='/summary'
+                  component={SymptomSummary}
+                />
+                <PrivateRoute
+                  exact path='/log/:logId'
+                  component={SymptomLogDetail}
+                />
+                <PrivateRoute
+                  exact path='/log/:logId/edit'
+                  component={SymptomLogEdit}
+                />
+                <PublicRoute
+                  exact path='/signUp'
+                  component={SignUpPage}
+                />
+                <PublicRoute
+                  exact path='/signIn'
+                  component={SignInPage}
+                />
+                <Route
+                  component={NotFound}
+                />
+              </Switch>
+          </main>
         </SymptomsContext.Provider>
-      </main>
       <footer>
         
       </footer>
