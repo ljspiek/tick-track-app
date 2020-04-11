@@ -5,13 +5,15 @@ import LandingPage from './LandingPage/LandingPage'
 import Nav from './Nav/Nav'
 import SymptomLog from './SymptomLog/SymptomLog'
 import SymptomSummary from './SymptomSummary/SymptomSummary'
-import SignUp from './SignUp/SignUp'
-import SignIn from './SignIn/SignIn'
+import SignUpPage from './SignUp/SignUp'
+import SignInPage from './SignIn/SignInPage'
 import SymptomLogDetail from './SymptomLogDetail/SymptomLogDetail'
 import NotFound from './NotFound/NotFound'
 import SymptomLogEdit from './SymptomLogEdit/SymptomLogEdit'
 import SymptomsContext from './SymptomsContext'
 import config from './config';
+import PrivateRoute from './Utilities/PrivateRoute'
+import PublicRoute from './Utilities/PublicRoute'
 
 
 
@@ -105,29 +107,29 @@ class App extends Component {
               exact path='/'
               component={LandingPage}
             />
-            <Route
+            <PrivateRoute
               exact path='/log'
               component={SymptomLog}
             />
-            <Route
+            <PrivateRoute
               exact path='/summary'
               component={SymptomSummary}
             />
-            <Route
+            <PrivateRoute
               exact path='/log/:logId'
               component={SymptomLogDetail}
             />
-            <Route
+            <PrivateRoute
               exact path='/log/:logId/edit'
               component={SymptomLogEdit}
             />
-            <Route
+            <PublicRoute
               exact path='/signUp'
-              component={SignUp}
+              component={SignUpPage}
             />
-            <Route
+            <PublicRoute
               exact path='/signIn'
-              component={SignIn}
+              component={SignInPage}
             />
             <Route
               component={NotFound}
