@@ -8,14 +8,7 @@ import './nav.css'
 export default class Nav extends Component {
   static contextType = SymptomsContext
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     loggedIn: true
-  //   };
-  // }
-
-  state = {
+   state = {
     loggedIn: this.context.loggedIn
   }
 
@@ -65,8 +58,7 @@ export default class Nav extends Component {
   
   
   render() {
-    console.log('STATE:', this.state)
-    console.log('CONTEXT', this.context.loggedIn)
+
     const loggedIn = this.context.loggedIn
 
     if(loggedIn === true) {
