@@ -119,13 +119,13 @@ class App extends Component {
             <h2>Take control of your Lyme, one day at a time.</h2>
           </header>
         
-          {/* <main >
+          <main >
               <Switch>
                 <Route 
                   exact path='/'
                   component={LandingPage}
                 />
-                <PrivateRoute
+                {/* <PrivateRoute
                   exact path='/log'
                   component={SymptomLog}
                 />
@@ -151,9 +151,9 @@ class App extends Component {
                 />
                 <Route
                   component={NotFound}
-                />
+                /> */}
               </Switch>
-          </main> */}
+          </main>
         </SymptomsContext.Provider>
       <footer>
         
