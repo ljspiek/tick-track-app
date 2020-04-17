@@ -119,7 +119,7 @@ class App extends Component {
             <h2>Take control of your Lyme, one day at a time.</h2>
           </header>
         
-          <main >
+          {/* <main >
               <Switch>
                 <Route 
                   exact path='/'
@@ -153,7 +153,7 @@ class App extends Component {
                   component={NotFound}
                 />
               </Switch>
-          </main>
+          </main> */}
         </SymptomsContext.Provider>
       <footer>
         
