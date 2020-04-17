@@ -14,7 +14,8 @@ import SymptomsContext from './SymptomsContext'
 import config from './config';
 import PrivateRoute from './Utilities/PrivateRoute'
 import PublicRoute from './Utilities/PublicRoute'
-import TokenService from './services/token-service';
+import TokenService from './services/token-service'
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -109,6 +110,7 @@ class App extends Component {
     
 
     return (
+      <BrowserRouter>
       <div className='App'>
         <SymptomsContext.Provider value={contextValue}>
           <header>
@@ -157,6 +159,7 @@ class App extends Component {
         
       </footer>
       </div>
+      </BrowserRouter>
     );
   }
 }
