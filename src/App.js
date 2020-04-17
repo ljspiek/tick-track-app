@@ -129,7 +129,7 @@ class App extends Component {
                   exact path='/log'
                   component={SymptomLog}
                 />
-                {/* <PrivateRoute
+                <PrivateRoute
                   exact path='/summary'
                   component={SymptomSummary}
                 />
@@ -137,7 +137,7 @@ class App extends Component {
                   exact path='/log/:logId'
                   component={SymptomLogDetail}
                 />
-                <PrivateRoute
+                {/* <PrivateRoute
                   exact path='/log/:logId/edit'
                   component={SymptomLogEdit}
                 />
