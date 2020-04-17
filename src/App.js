@@ -137,7 +137,7 @@ class App extends Component {
                   exact path='/log/:logId'
                   component={SymptomLogDetail}
                 />
-                {/* <PrivateRoute
+                <PrivateRoute
                   exact path='/log/:logId/edit'
                   component={SymptomLogEdit}
                 />
@@ -148,7 +148,7 @@ class App extends Component {
                 <PublicRoute
                   exact path='/signIn'
                   component={SignInPage}
-                /> */}
+                />
                 <Route
                   component={NotFound}
                 />
