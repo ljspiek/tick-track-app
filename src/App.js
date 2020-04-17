@@ -148,10 +148,10 @@ class App extends Component {
                 <PublicRoute
                   exact path='/signIn'
                   component={SignInPage}
-                />
+                /> */}
                 <Route
                   component={NotFound}
-                /> */}
+                />
               </Switch>
           </main>
         </SymptomsContext.Provider>
