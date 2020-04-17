@@ -125,11 +125,11 @@ class App extends Component {
                   exact path='/'
                   component={LandingPage}
                 />
-                {/* <PrivateRoute
+                <PrivateRoute
                   exact path='/log'
                   component={SymptomLog}
                 />
-                <PrivateRoute
+                {/* <PrivateRoute
                   exact path='/summary'
                   component={SymptomSummary}
                 />
