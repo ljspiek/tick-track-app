@@ -145,6 +145,7 @@ class App extends Component {
                   exact path='/signUp'
                   component={SignUpPage}
                 />
+                
                 <PublicRoute
                   exact path='/signIn'
                   component={SignInPage}
