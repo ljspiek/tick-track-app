@@ -221,7 +221,7 @@ export default class SymptomLogEdit extends Component {
                         {this.context.newinfectionindicators.map(indicator =>
                             <div key={`Infection_${indicator.id}`}>
                                 <label>
-                                    <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} name ={newInfections[indicator.id] || indicator.id} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
+                                    <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} value={indicator.indicator} name ={newInfections[indicator.id] || "newinfectionindicators"} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
                                     {indicator.indicator}
                                 </label>
                                 <br/>

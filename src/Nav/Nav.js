@@ -62,7 +62,6 @@ export default class Nav extends Component {
     const loggedIn = this.context.loggedIn
 
     if(loggedIn === true) {
-      console.log("TRUE")
       return (
           <nav>
            {this.renderSignOutLink()}
