@@ -27,12 +27,12 @@ class App extends Component {
     generalhealth: [],
     symptoms: [],
     loggedIn: TokenService.hasAuthToken(),
-    authToken: TokenService.getAuthToken()
+    
   };
 
   
   componentDidMount() {
-    console.log(this.state.authToken)
+    
     Promise.all([
       fetch(`${config.API_ENDPOINT}/fields`, {
         method: 'GET',
@@ -44,10 +44,13 @@ class App extends Component {
         }
       }),
       fetch(`${config.API_ENDPOINT}/log`, {
+        method: 'GET',
+        headers: {
           'content-type': 'application/json',
           'authorization': `bearer ${TokenService.getAuthToken()}`,
           'Access-Control-Allow-Origin': 'no-cors',
           'Access-Control-Expose-Headers': 'authorization'
+        }
       })
     ])
     .then(([fieldsRes, logRes]) => {
@@ -77,7 +80,7 @@ class App extends Component {
   addLog = (logData) => {
     const logs = this.state.symptomlog
     const newLog = logs.concat(logData)
-    console.log(logs, newLog)
+    
     this.setState({
       symptomlog: newLog
     })

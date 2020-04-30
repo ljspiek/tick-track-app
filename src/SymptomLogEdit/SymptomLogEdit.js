@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SymptomsContext from '../SymptomsContext'
 import config from '../config'
+import TokenService from '../services/token-service'
 
 export default class SymptomLogEdit extends Component {
     static contextType = SymptomsContext
@@ -111,14 +112,11 @@ export default class SymptomLogEdit extends Component {
             deletedinfs: removeInf
         }
        
-        console.log(chgLog)
-        
-
         fetch(`${config.API_ENDPOINT}/log/${logId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${config.API_KEY}`,
+                'Authorization': `Bearer ${TokenService.getAuthToken()}`,
                 'Access-Control-Allow-Origin': 'no-cors'
             },
             body: JSON.stringify(chgLog),
@@ -133,9 +131,6 @@ export default class SymptomLogEdit extends Component {
                 pathname: '/summary'
             })
         })
-
-       
-       
     }
 
     componentDidMount() {
@@ -144,7 +139,7 @@ export default class SymptomLogEdit extends Component {
             method: 'GET',
             headers: {
               'content-type': 'application/json',
-              'Authorization': `Bearer ${config.API_KEY}`,
+              'Authorization': `Bearer ${TokenService.getAuthToken()}`,
               'Access-Control-Allow-Origin': 'no-cors'
             }
           })
@@ -199,8 +194,6 @@ export default class SymptomLogEdit extends Component {
                 <div>
                    <h2>Symptoms Logged</h2>
                 
-                    
-    
                     <form id="log-symptoms" onSubmit={(e) => {this.handleSubmit(e)}}>
                     <section className="form-section overall-health">
                         <label htmlFor="log-date">Date:</label>
@@ -234,7 +227,6 @@ export default class SymptomLogEdit extends Component {
                             <div key={`Symptom_${symptom.id}`}>
                             <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
                             <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name ={symptomIds[symptom.id] || symptom.id} defaultValue={symptomEntries[symptom.id] || "1"}>
-                                {/* TO DO: resolve default symptom values; changed w/ API connection */}
                                 <option value="1">None</option>
                                 <option value="2">Mild</option>
                                 <option value="3">Moderate</option>

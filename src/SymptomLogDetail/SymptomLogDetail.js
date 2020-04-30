@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import SymptomsContext from '../SymptomsContext'
 import config from '../config'
+import TokenService from '../services/token-service'
 
 export default class SymptomLogDetail extends Component {
 
@@ -24,12 +25,12 @@ export default class SymptomLogDetail extends Component {
     handleClickDelete = e => {
         e.preventDefault()
         const logId = this.props.match.params.logId
-        console.log(logId) 
+        
         fetch(`${config.API_ENDPOINT}/log/${logId}`, {
             method: 'DELETE',
             headers: {
               'content-type': 'application/json',
-              'Authorization': `Bearer ${config.API_KEY}`,
+              'Authorization': `Bearer ${TokenService.getAuthToken()}`,
               'Access-Control-Allow-Origin': 'no-cors'
             }
           })
@@ -45,7 +46,7 @@ export default class SymptomLogDetail extends Component {
               this.context.deleteLog(logId)
               this.props.onDeleteLog(logId)
               this.props.history.push('/summary')
-            console.log(res)
+           
           })
           .catch(error => {
               console.error({ error })
@@ -58,7 +59,7 @@ export default class SymptomLogDetail extends Component {
             method: 'GET',
             headers: {
               'content-type': 'application/json',
-              'Authorization': `Bearer ${config.API_KEY}`,
+              'Authorization': `Bearer ${TokenService.getAuthToken()}`,
               'Access-Control-Allow-Origin': 'no-cors'
             }
           })

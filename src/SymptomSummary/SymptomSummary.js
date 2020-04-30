@@ -14,9 +14,12 @@ export default class SymptomSummary extends Component {
 
     componentDidMount() {
         fetch(`${config.API_ENDPOINT}/log`, {
-            'content-type': 'application/json',
-             'Authorization': `Bearer ${TokenService.getAuthToken()}`,
-             'Access-Control-Allow-Origin': 'no-cors'
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                 'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+                 'Access-Control-Allow-Origin': 'no-cors'
+            }
          })
         .then((res) => {
             if(!res.ok)

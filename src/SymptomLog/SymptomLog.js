@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import config from '../config'
 import SymptomsContext from '../SymptomsContext'
+import TokenService from '../services/token-service'
 
 export default class SymptomLog extends Component {
     static contextType = SymptomsContext
@@ -41,7 +42,7 @@ export default class SymptomLog extends Component {
             return (item.symptoms_id===e.target.id) ? false : true ; 
          } )
         const newSymptoms = filtered.concat(newSelections)
-        // const newSymptoms = symptoms.concat(newSelections)
+        
         this.setState({
             symptoms: newSymptoms
         })
@@ -54,11 +55,10 @@ export default class SymptomLog extends Component {
         const generalhealth = this.state.generalhealth
         const newinfectionindicators = this.state.newinfectionindicators
         const symptoms = this.state.symptoms
-        console.log("LOGDATE:", logDate, "GENERALHEALTH:", generalhealth, "NEWINFECTIONS:", newinfectionindicators, "SYMPTOMS:", symptoms)
+        
         const log = {
             date_created: logDate,
             general_health_id: generalhealth,
-            user_id: 1,
             newinfectionindicators: newinfectionindicators,
             symptoms: symptoms
         }
@@ -66,7 +66,7 @@ export default class SymptomLog extends Component {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${config.API_KEY}`
+                'Authorization': `Bearer ${TokenService.getAuthToken()}`
             },
             body: JSON.stringify(log)
         })
