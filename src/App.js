@@ -26,23 +26,28 @@ class App extends Component {
     newinfectionindicators: [],
     generalhealth: [],
     symptoms: [],
-    loggedIn: TokenService.hasAuthToken()
+    loggedIn: TokenService.hasAuthToken(),
+    authToken: TokenService.getAuthToken()
   };
 
+  
   componentDidMount() {
+    console.log(this.state.authToken)
     Promise.all([
       fetch(`${config.API_ENDPOINT}/fields`, {
         method: 'GET',
         headers: {
           'content-type': 'application/json',
-          'Authorization': `Bearer ${config.API_KEY}`,
-          'Access-Control-Allow-Origin': 'no-cors'
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
+          'Access-Control-Allow-Origin': 'no-cors',
+          'Access-Control-Expose-Headers': 'authorization'
         }
       }),
       fetch(`${config.API_ENDPOINT}/log`, {
           'content-type': 'application/json',
-          'Authorization': `Bearer ${TokenService.getAuthToken()}`,
-          'Access-Control-Allow-Origin': 'no-cors'
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
+          'Access-Control-Allow-Origin': 'no-cors',
+          'Access-Control-Expose-Headers': 'authorization'
       })
     ])
     .then(([fieldsRes, logRes]) => {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import config from '../config'
 import { Link } from 'react-router-dom'
 import SymptomsContext from '../SymptomsContext'
+import TokenService from '../services/token-service'
 
 export default class SymptomSummary extends Component {
     static contextType = SymptomsContext
@@ -14,7 +15,7 @@ export default class SymptomSummary extends Component {
     componentDidMount() {
         fetch(`${config.API_ENDPOINT}/log`, {
             'content-type': 'application/json',
-             'Authorization': `Bearer ${config.API_KEY}`,
+             'Authorization': `Bearer ${TokenService.getAuthToken()}`,
              'Access-Control-Allow-Origin': 'no-cors'
          })
         .then((res) => {
