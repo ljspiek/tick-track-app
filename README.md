@@ -11,8 +11,8 @@
 
 <p>Due to the private nature of personal medical data, TickTrack is protected with JSON Web Token (JWT).</p>
 
-<p>To see mock data and experiment with the functionality, use the following log on information:
-    email: testing@testing.com
+<p>To see mock data and experiment with the functionality, use the following log on information:<br>
+    email: testing@testing.com<br>
     password: Password1!
 </p>
 
