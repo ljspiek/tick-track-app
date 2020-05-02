@@ -1,4 +1,4 @@
-<h1>TickTrack (Server)</h1>
+<h1>TickTrack (Client)</h1>
 
 
 <h2>Links</h2>
