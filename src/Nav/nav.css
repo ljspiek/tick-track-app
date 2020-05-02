@@ -6,5 +6,11 @@ ul {
 
 li {
     display: inline;
+    padding: 10px;
+    
+    
+}
+
+a {
     padding: 8px;
 }

@@ -31,9 +31,50 @@ class App extends Component {
   };
 
   
-  componentDidMount() {
+  deleteLog = (logId) => {
+    this.setState({
+      symptomlog: this.state.symptomlog.filter(symptomlog => symptomlog.id !== logId)
+    });
+  }
+
+  addLog = (logData) => {
+    const logs = this.state.symptomlog
+    const newLog = logs.concat(logData)
     
-    Promise.all([
+    this.setState({
+      symptomlog: newLog
+    })
+  }
+
+  updateLogIn = () => {
+    if(TokenService.hasAuthToken()){
+      this.setState({
+        loggedIn: true
+      })
+    } else {
+      this.setState({
+        loggedIn: false
+      })
+    }
+  }
+
+  render() {
+
+    
+    const contextValue = {
+      symptomlog: this.state.symptomlog,
+      newinfectionindicators: this.state.newinfectionindicators,
+      generalhealth: this.state.generalhealth,
+      symptoms: this.state.symptoms,
+      deleteLog: this.deleteLog,
+      addLog: this.addLog,
+      currentlog: [],
+      loggedIn: this.state.loggedIn,
+      updateLogin: this.updateLogIn
+      
+    }
+    
+    if(this.state.loggedIn === true) {Promise.all([
       fetch(`${config.API_ENDPOINT}/fields`, {
         method: 'GET',
         headers: {
@@ -68,53 +109,7 @@ class App extends Component {
         symptomlog: log
       })
     })
-    
   }
-
-  deleteLog = (logId) => {
-    this.setState({
-      symptomlog: this.state.symptomlog.filter(symptomlog => symptomlog.id !== logId)
-    });
-  }
-
-  addLog = (logData) => {
-    const logs = this.state.symptomlog
-    const newLog = logs.concat(logData)
-    
-    this.setState({
-      symptomlog: newLog
-    })
-  }
-
-  updateLogIn = () => {
-    if(TokenService.hasAuthToken()){
-      this.setState({
-        loggedIn: true
-      })
-    } else {
-      this.setState({
-        loggedIn: false
-      })
-    }
-  }
-
-  render() {
-
-    
-
-    const contextValue = {
-      symptomlog: this.state.symptomlog,
-      newinfectionindicators: this.state.newinfectionindicators,
-      generalhealth: this.state.generalhealth,
-      symptoms: this.state.symptoms,
-      deleteLog: this.deleteLog,
-      addLog: this.addLog,
-      currentlog: [],
-      loggedIn: this.state.loggedIn,
-      updateLogin: this.updateLogIn
-
-    }
-
     
 
     return (

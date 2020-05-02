@@ -97,6 +97,9 @@ header {
 section {
   min-height: 200px;
   padding: 6% 0;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
@@ -111,6 +114,41 @@ button {
   margin: 4px 2px;
   cursor: pointer;
   width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  
 }
 
+.sign {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
 
+input[type=password] {
+  margin: 8px;
+  padding: 8px;
+
+}
+
+input[type=email] {
+  margin: 8px;
+  padding: 8px;
+}
+
+fieldset {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.form-section-symptoms {
+  margin: 0 auto;
+  
+}
+
+.symptom {
+  margin: 20px;
+  height: 100%;
+  width: 100%;
+}

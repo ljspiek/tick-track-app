@@ -41,18 +41,16 @@ export default class SignUp extends Component {
                         <legend><h3>Sign Up</h3></legend>
                         <label>
                             email:
-                            <input className="email" type="email" placeholder="email"/>
+                            <input className="email" type="email" placeholder="email" required/>
                         </label>
+                        <br/>
+                        <br/>
                         <label>
                             password:
-                            <input className="password" type="password" placeholder="password"/>
-                        </label>
-                        <label>
-                            password:
-                            <input className="passwordrepeat" type="password" placeholder="repeat password"/>
+                            <input className="password" type="password" placeholder="password" required/>
                         </label>
                     </fieldset>
-                    <button type='submit'>Sign Up</button>
+                    <button className='sign' type='submit'>Sign Up</button>
                 </form>
         </section>
         )

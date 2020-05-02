@@ -51,14 +51,16 @@ export default class SignIn extends Component {
                         <legend><h3>Sign In</h3></legend>
                         <label>
                             email:
-                            <input className="email" type="email" placeholder="email"/>
+                            <input className="email" type="email" placeholder="email" required/>
                         </label>
+                        <br/>
+                        <br/>
                         <label>
                             password:
-                            <input className="password" type="password" placeholder="password"/>
+                            <input className="password" type="password" placeholder="password" required/>
                         </label>
                     </fieldset>
-                    <button type='submit'>Sign In</button>
+                    <button type='submit' className='sign'>Sign In</button>
                 </form>
         </section>
         )

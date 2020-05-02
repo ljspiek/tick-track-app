@@ -100,13 +100,13 @@ export default class SymptomLog extends Component {
             <form id="log-symptoms" onSubmit={(e) => {this.handleSubmit(e)}}>
                 <section className="form-section overall-health">
                     <label htmlFor="log-date">Date:</label>
-                    <input onChange={(e) => {this.handleInputChange(e)}} value={this.state.logDate} type="date" id="log-date" name="logDate" ref={(a) => this.uncontrolInput = a}/>
+                    <input onChange={(e) => {this.handleInputChange(e)}} value={this.state.logDate} type="date" id="log-date" name="logDate" required ref={(a) => this.uncontrolInput = a}/>
                     <label><h3>Overall Health</h3></label>
                     <p>Generally, do you feel:</p>
                     {this.context.generalhealth.map(health =>
                         <div key={health.id}>
                             <label>
-                                <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.id} className="overall-health-radio"/>
+                                <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.id} className="overall-health-radio" required/>
                                 {health.rating}
                             </label>
                         </div>
@@ -127,8 +127,8 @@ export default class SymptomLog extends Component {
                 <section className="form-section symptoms">
                     <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>
                     {this.context.symptoms.map(symptom =>
-                        <div key={symptom.id}>
-                        <label>{symptom.symptom}</label>
+                        <div key={symptom.id} className="form-section-symptoms">
+                        <label className="symptom">{symptom.symptom}</label>
                         <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name={symptom.symptom}>
                             <option value="1">None</option>
                             <option value="2">Mild</option>
