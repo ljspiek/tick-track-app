@@ -7,6 +7,13 @@ export default function LandingPage() {
             <section>
                 <h3>Lyme Disease: The Great Imitator</h3>
                 <p>In a recent study of 6,000+ Lyme patients, 97% reported persisting symptoms.</p>
+                <br/>
+                <p>TickTrack is a secure app that only requires your email to get started.  Try out the app using the following credentials to see if this solution is right for you.</p>
+                <ul>
+                    <li>email: testing@testing.com</li>
+                    <br/>
+                    <li>password: Password1!</li>
+                </ul>
             </section>
 
             <section>
