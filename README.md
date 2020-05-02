@@ -1,68 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>TickTrack (Server)</h1>
 
-## Available Scripts
 
-In the project directory, you can run:
+<h2>Links</h2>
+<p>Live Client hosted on Vercel (formerly Zeit): https://tick-track-app.now.sh/</p>
+<p>TickTrack App (Server) Repo: https://github.com/ljspiek/tick-track-api </p>
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h2>Summary</h2>
+<p>This app is intended to assist Lyme patients with recording their daily symptoms.  By consistently tracking symptoms, patients can work with their providers to identify trends and formulate treatment plans tailored to their specific condition.</p>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<p>Due to the private nature of personal medical data, TickTrack is protected with JSON Web Token (JWT).</p>
 
-### `npm test`
+<p>To see mock data and experiment with the functionality, use the following log on information:
+    email: testing@testing.com
+    password: Password1!
+</p>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p>Upon logging in, click 'Log Your Symptoms' to create a new log or see a summary of symptoms logged by clicking on 'Track Your Progress.'</p>
 
-### `npm run build`
+<p>You are also invited to Sign Up and create your own logs!</p>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2>Installation</h2>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<p>To get started, run 'npm install' to download all required dependencies.</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2>Technology Used</h2>
 
-### `npm run eject`
+<p>This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).</p>
+<p>The entire app is built using React.js, JavaScript, HTML5, and CSS3.</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<h2>Screenshots</h2>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<img src = home.png>
+<img src = log.png>
+<img src = history.png>
+<img src = detail.png>
