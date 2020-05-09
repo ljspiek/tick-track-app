@@ -30,6 +30,52 @@ class App extends Component {
     
   };
 
+  componentDidMount() {
+    this.updateFieldsandLogs()
+  }
+
+  updateFieldsandLogs = () => {
+         
+      if(this.state.loggedIn === true) {Promise.all([
+        fetch(`${config.API_ENDPOINT}/fields`, {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json',
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
+            'Access-Control-Allow-Origin': 'no-cors',
+            'Access-Control-Expose-Headers': 'authorization'
+          }
+        }),
+        fetch(`${config.API_ENDPOINT}/log`, {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json',
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
+            'Access-Control-Allow-Origin': 'no-cors',
+            'Access-Control-Expose-Headers': 'authorization'
+          }
+        })
+      ])
+      .then(([fieldsRes, logRes]) => {
+        if(!fieldsRes.ok)
+          return fieldsRes.json().then(e => Promise.reject(e));
+        if(!logRes.ok)
+          return logRes.json().then(e => Promise.reject(e));
+      return Promise.all([fieldsRes.json(), logRes.json()]);
+      })
+      .then(([fields, log]) => {
+        this.setState({
+          newinfectionindicators: fields.newinfectionindicators,
+          generalhealth: fields.generalhealth,
+          symptoms: fields.symptoms,
+          symptomlog: log
+        })
+        
+        
+      })
+    }
+  }
+ 
   
   deleteLog = (logId) => {
     this.setState({
@@ -51,6 +97,9 @@ class App extends Component {
       this.setState({
         loggedIn: true
       })
+      
+      setTimeout(this.updateFieldsandLogs, 20)
+      
     } else {
       this.setState({
         loggedIn: false
@@ -74,44 +123,7 @@ class App extends Component {
       
     }
     
-    if(this.state.loggedIn === true) {Promise.all([
-      fetch(`${config.API_ENDPOINT}/fields`, {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          'authorization': `bearer ${TokenService.getAuthToken()}`,
-          'Access-Control-Allow-Origin': 'no-cors',
-          'Access-Control-Expose-Headers': 'authorization'
-        }
-      }),
-      fetch(`${config.API_ENDPOINT}/log`, {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          'authorization': `bearer ${TokenService.getAuthToken()}`,
-          'Access-Control-Allow-Origin': 'no-cors',
-          'Access-Control-Expose-Headers': 'authorization'
-        }
-      })
-    ])
-    .then(([fieldsRes, logRes]) => {
-      if(!fieldsRes.ok)
-        return fieldsRes.json().then(e => Promise.reject(e));
-      if(!logRes.ok)
-        return logRes.json().then(e => Promise.reject(e));
-    return Promise.all([fieldsRes.json(), logRes.json()]);
-    })
-    .then(([fields, log]) => {
-      this.setState({
-        newinfectionindicators: fields.newinfectionindicators,
-        generalhealth: fields.generalhealth,
-        symptoms: fields.symptoms,
-        symptomlog: log
-      })
-    })
-  }
-    
-
+  
     return (
       <BrowserRouter>
       <div className='App'>
@@ -119,7 +131,7 @@ class App extends Component {
           <header>
             <Nav/>
             <Link to='/'><h1 className='app-name'>TickTrack<img className="logo" src={tick} alt="logo" /></h1></Link>
-            <h2>Take control of your Lyme, one day at a time.</h2>
+            
           </header>
         
           <main >

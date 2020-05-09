@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import TokenService from '../services/token-service'
 import SymptomsContext from '../SymptomsContext'
 import './nav.css'
+import tick from '../../src/tick.png'
 
 
 export default class Nav extends Component {
@@ -25,8 +26,9 @@ export default class Nav extends Component {
 
   renderSignOutLink() {
     return (
-      <div>
+      <div className="sign-out-div">
         <Link
+        className="sign-out"
         onClick={this.handleSignOutClick}
         to='/'>
           Sign Out
@@ -37,12 +39,12 @@ export default class Nav extends Component {
 
   renderSignInLink() {
     return (
-      <div>
-        <Link
+      <div className="public-div">
+        <Link className="link-nav"
         to='/signin'>
           Sign In
         </Link>
-        <Link
+        <Link className="link-nav"
         to='/signup'>
           Sign Up
         </Link>
@@ -65,6 +67,7 @@ export default class Nav extends Component {
       return (
           <nav>
            {this.renderSignOutLink()}
+           <Link to='/'><h1 className='app-name'>TickTrack<img className="logo" src={tick} alt="logo" /></h1></Link>
           </nav>
       )
 
@@ -73,6 +76,7 @@ export default class Nav extends Component {
       return(
         <nav>
         {this.renderSignInLink()}
+        <Link to='/'><h1 className='app-name'>TickTrack<img className="logo" src={tick} alt="logo" /></h1></Link>
        </nav>
       )
     }

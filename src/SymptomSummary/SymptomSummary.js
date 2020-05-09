@@ -27,6 +27,7 @@ export default class SymptomSummary extends Component {
             return res.json()
         })
         .then((res) => {
+            
             this.setState({
                 symptomlog: res
             })
@@ -44,7 +45,7 @@ export default class SymptomSummary extends Component {
                     <h2>Symptom History</h2>
                     {symptLog.map(data =>
                         
-                        <section key={`DATA_${data.id}`}>
+                        <section className="symptom-summary" key={`DATA_${data.id}`}>
                             <h3>{data.date}</h3>
                             <h4>Overall Health: {data.generalhealth}</h4>
                             <h4>New Infection Indicators: {data.newinfections || 'None'}</h4>
@@ -56,7 +57,10 @@ export default class SymptomSummary extends Component {
             )
         } else{
             return(
-                <div>Loading</div>
+                <div>
+                    <h2>No logs yet</h2>
+                    <p><Link className="go-to-log" to={`/log`}>Log</Link> your symptoms to see your symptom history summary here.</p>
+                </div>
             )
         }
        

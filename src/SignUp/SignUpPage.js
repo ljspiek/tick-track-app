@@ -20,6 +20,13 @@ export default class SignUpPage extends Component {
             <SignUp
             onRegistrationSuccess={this.handleSignUpSuccess}
             />
+            <p className="password-requirements">Accepted passwords are a minimum of eight characters long and include at least:</p>
+            <ul className="password-req">
+                <li className="password-req">One uppercase character</li>
+                <li className="password-req">One lowercase character</li>
+                <li className="password-req">One special character</li>
+                <li className="password-req">One number</li>
+            </ul>
         </section>
         )
     }

@@ -1,8 +1,5 @@
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Orbitron', sans-serif;
@@ -12,16 +9,30 @@ body {
 .app-name {
   font-family: 'Orbitron', sans-serif;
   color: #30ff3b;
- 
+  margin: 0;
+  padding-top: 20px;
+}
+
+.app-name:hover {
+  color: #f55d37;
+}
+
+.go-to-log:hover {
+  color: #30ff3b;
 }
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .logo {
   max-height: 30px;
+  position: -webkit-sticky; /*Safari */
+  position: sticky;
+  top: 0;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -31,8 +42,26 @@ code {
 * {
   box-sizing: border-box;
   background-color: #0D0D0D;
-  color: #f2f2f2
+  color: #f2f2f2;
+ 
 }
+
+.landing-page-heading:hover {
+  color: #30ff3b;
+}
+
+.landing-page-text {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  text-align: left;
+}
+
+section.landing-page {
+  width: 80%;
+ 
+}
+
 
 body {
   font-family: "Open Sans",
@@ -50,6 +79,7 @@ footer {
 }
 
 nav {
+  
   position: fixed;
   top: 0;
   left: 0;
@@ -63,9 +93,76 @@ h3 {
   color: #4a81ff
 }
 
+h2 {
+  margin-bottom: 50px;
+}
+
 h4, 
 p {
   color: #f2f2f2
+}
+
+p.sign-error {
+  background-color: #f2f2f2;
+  border: solid 2px #f55d37;
+  color: #f55d37;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px;
+  width: 50%;
+}
+
+
+.sign-in-dummy {
+  font-size: 18px;
+}
+
+p.sign-in-dummy {
+  text-align: left;
+}
+
+li.sign-in-dummy {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.password-requirements, .password-req {
+  font-size: 18px;
+}
+
+p.password-requirements {
+  margin-bottom: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 80%;
+}
+
+ul.password-req {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 80%;
+}
+
+li.password-req {
+  margin-left: 20px
+}
+
+ul.password-req li::before {
+  content: "\2022";
+  color: #f55d37;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
 
 form {
@@ -74,22 +171,55 @@ form {
   justify-content: flex-end;
 }
 
-/* .checkboxes label {
+fieldset.symptoms {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label.symptom {
   display: block;
-  padding-right: 10px;
-  padding-left: 22px;
-  text-indent: -22px;
+  float: left;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2px;
+  margin-top: 18px;
+  
 }
 
-.checkboxes input {
-  vertical-align: middle;
+select {
+  display: block;
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.checkboxes label span {
-  vertical-align: middle;
-} */
+.log-date {
+  padding-right: 8px;
+}
+
+.genhealth-fieldset {
+  margin-top: 24px;
+}
+
+.genhealth {
+  text-align: left;
+  margin-left: 12px;
+}
+
+fieldset.new-infection {
+  border: none;
+}
 
 
+
+.infection {
+  margin-left: 20px;
+  padding: 6px;
+  text-align: left;
+    
+}
 
 header {
  padding-bottom: 0px;
@@ -112,7 +242,7 @@ button {
   color: #0D0D0D;
   font-family: 'Orbitron', sans-serif;
   font-weight: bold;
-  padding: 16px 32px;
+  padding: 16px 16px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
@@ -120,6 +250,85 @@ button {
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
+}
+
+button.reset,
+button.cancel,
+button.close {
+  background-color: #4a81ff;
+}
+
+button.delete {
+  background-color: #f55d37;
+}
+
+.buttons {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.three-buttons > button {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.three-buttons {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.close, .delete, .edit {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+ul.inf {
+  margin-right: 0px;
+  padding-inline-start: 40px;
+  text-align: left;
+  width: 80%;
+}
+
+:required {
+  color: #f55d37;
+}
+
+.detail-heading {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: auto;
+  margin-bottom: 8px;
+}
+
+h2.log-header-heading {
+  margin-top: 60px;
+}
+
+h3.heading-summary-detail {
+  margin-top: 10px;
+}
+
+.symptoms-detail {
+  text-align: left;
+  
+}
+
+.symptom-log-detail {
+  padding-bottom: 20px;
+}
+
+button > a {
+  background: none;
+  color: #0D0D0D;
+  padding: 0px;
   
 }
 
@@ -142,7 +351,14 @@ input[type=email] {
 
 fieldset {
   width: 90%;
-  margin-left: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+fieldset.new-infection {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-section-symptoms {
@@ -156,7 +372,117 @@ fieldset {
   width: 100%;
 }
 
+section.symptom-log-detail {
+  border: solid #f2f2f2 2px;
+  margin-bottom: 20px;
+}
+
+section.symptom-summary {
+  border: solid #f2f2f2 2px;
+  padding: 20px;
+  margin-bottom: 20px;
+  
+}
+
+/*** Styles added to fix the issue with zoom in on iphone ***/
+/* iPhone < 5: */
+@media screen and (device-aspect-ratio: 2/3) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+}
+
+/* iPhone 5, 5C, 5S, iPod Touch 5g */
+@media screen and (device-aspect-ratio: 40/71) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+}
+
+/* iPhone 6, iPhone 6s, iPhone 7 portrait/landscape */
+@media screen and (device-aspect-ratio: 375/667) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+}
+
+/* iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus portrait/landscape */
+@media screen and (device-aspect-ratio: 9/16) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+}
+
+@media only screen and (min-width: 600px) {
+  section.symptom-summary {
+    width: 60%;
+  }
+
+  li.sign-in-dummy {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    text-align: left;
+    width: 60%;
+  }
+
+  p.sign-in-dummy {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 80%;
+  }
+
+  .close, .delete, .edit {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
 @media only screen and (min-width: 900px) {
+  nav {
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  div.infection {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  label.symptom {
+    display: block;
+    float: left;
+    text-align: left;
+    margin-left: 60px;
+    margin-right: auto;
+    margin-bottom: 2px;
+    margin-top: 24px;
+    width: 90%;
+  }
+  
+  select {
+    display: block;
+    float: left;
+    margin-left: 60px;
+    margin-right: auto;
+  }
+
   section {
     width: 60%;
   }
@@ -164,4 +490,35 @@ fieldset {
   fieldset {
     width: 100%;
   }
+
+  
+  .three-buttons > button {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .three-buttons {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+
+  .close, .delete, .edit {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  
+
+  p.sign-in-dummy {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 60%;
+  }
+
+  
 }

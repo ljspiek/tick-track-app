@@ -29,7 +29,7 @@ export default class SignIn extends Component {
             password: password
         })
             .then(res => {
-                
+              
                 TokenService.saveAuthToken(res.authToken)
                 this.props.onLoginSuccess()
                 this.context.updateLogin()
@@ -43,19 +43,22 @@ export default class SignIn extends Component {
         const { error } = this.state
         return (
             <section>
+                <div role='alert'>
+                    {error && <p className="sign-error">{error}</p>}
+                </div>
                 <form 
                 className='SignInForm'
                 onSubmit={this.handleSubmitJwtAuth}
                 >
-                    <fieldset>
+                    <fieldset className="signIn">
                         <legend><h3>Sign In</h3></legend>
-                        <label>
+                        <label className="sign">
                             email:
                             <input className="email" type="email" placeholder="email" required/>
                         </label>
                         <br/>
                         <br/>
-                        <label>
+                        <label className="sign">
                             password:
                             <input className="password" type="password" placeholder="password" required/>
                         </label>

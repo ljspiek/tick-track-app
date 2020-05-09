@@ -32,7 +32,9 @@ export default class SignUp extends Component {
         const { error } = this.state
         return (
             <section>
-            
+                <div role='alert'>
+                    {error && <p className="sign-error">{error}</p>}
+                </div>
                 <form 
                 className='SignUpForm'
                 onSubmit={this.handleSubmit}

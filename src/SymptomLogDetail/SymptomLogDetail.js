@@ -75,38 +75,50 @@ export default class SymptomLogDetail extends Component {
         })
     }
 
+
     render() {
         const logId = this.props.match.params.logId
         const log = this.state.log
        
         
         if(log.length !==0) {
+           
             return (
                 <div>
-                    <h2>On {log.header[0].date} you reported:</h2>
+                    <h2 className="log-header-heading">On {log.header[0].date} you reported:</h2>
                     
-                        <section>
-                            <h4>Overall Health: {log.generalhealth[0].rating}</h4>
+                        <section className="symptom-log-detail">
+                            <h3 className="heading-summary-detail">Overall Health:  {log.generalhealth[0].rating}</h3>
                             {log.newinfectionindicators.length > 0 && 
-                                <h4>New Infection Indicators:</h4>
+                                <h4 className="detail-heading">New Infection Indicators</h4>
                             }
                             {log.newinfectionindicators.map(indicators =>
-                                <ul key={`Indicators_${indicators.log_id}${indicators.infection_id}`}>
-                                    <li>{indicators.indicator}</li>
+                                <ul className="inf" key={`Indicators_${indicators.log_id}${indicators.infection_id}`}>
+                                    <li className="inf">{indicators.indicator}</li>
                                 </ul>
                             )}
-                            <h4>Symptoms:</h4>
-                            {log.symptoms.map(symptoms =>
-                                <ul key={`Symptoms_${symptoms.log_id}${symptoms.symptoms_id}`}>
-                                    <li>{symptoms.symptom}: {symptoms.severity}</li>
-                                </ul>
-                                )}
-                            <Link to='/summary'><button>Close</button></Link>
-                            {/* TO DO:Make Close into 'x' at top */}
-                            <Link to={{pathname:`/log/${logId}/edit`}}><button>Edit</button></Link>
-                            {/* TO DO: Pencil icon - mobile only? */}
-                            <button onClick={this.handleClickDelete}>Delete</button>
+                            {!log.symptoms[0].id && 
+                                <h4 className="detail-heading">No Symptoms Logged</h4>
+                            }
+
+                            {log.symptoms[0].id && 
+                                <div>
+                                    <h4 className="detail-heading">Symptoms</h4>
+                                        {log.symptoms.map(symptoms =>
+                                            <ul className="symptoms-detail" key={`Symptoms_${symptoms.log_id}${symptoms.symptoms_id}`}>
+                                                <li className="symptoms-detail-each">{symptoms.symptom}: {symptoms.severity}</li>
+                                            </ul>
+                                            )}
+                                </div>
+                            }
                         </section>
+                            <div className="three-buttons">
+                               <Link to={{pathname:`/log/${logId}/edit`}}> <button className="edit">Edit</button></Link>
+                                
+                                <Link to='/summary'><button className="close">Close</button></Link>
+                            
+                                <button className="delete" onClick={this.handleClickDelete}>Delete</button>
+                            </div>
                         
                 </div>
             )

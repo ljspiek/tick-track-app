@@ -99,33 +99,35 @@ export default class SymptomLog extends Component {
             <h2>Symptom Log</h2>
             <form id="log-symptoms" onSubmit={(e) => {this.handleSubmit(e)}}>
                 <section className="form-section overall-health">
-                    <label htmlFor="log-date">Date:</label>
+                    <label className="log-date">Date:</label>
                     <input onChange={(e) => {this.handleInputChange(e)}} value={this.state.logDate} type="date" id="log-date" name="logDate" required ref={(a) => this.uncontrolInput = a}/>
-                    <label><h3>Overall Health</h3></label>
-                    <p>Generally, do you feel:</p>
-                    {this.context.generalhealth.map(health =>
-                        <div key={health.id}>
-                            <label>
-                                <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.id} className="overall-health-radio" required/>
-                                {health.rating}
-                            </label>
-                        </div>
-                    )}
+                    <fieldset className="genhealth-fieldset">
+                        <legend><h3>Rate your Overall Health</h3></legend>
+                        
+                        {this.context.generalhealth.map(health =>
+                            <div className="genhealth" key={health.id}>
+                                <label className="genhealth">
+                                    <input type="radio" onChange={(e) => {this.handleInputChange(e)}} name="generalhealth" value={health.id} className="overall-health-radio" required/>
+                                    {health.rating}
+                                </label>
+                            </div>
+                        )}
+                    </fieldset>
                 </section>
-                <section className="form-section new-infection">
-                    <h3>Since your last symptom log, have there been any of the following:</h3>
+                <fieldset className="form-section new-infection">
+                    <h3 className="infection-title">Do you have any new infection indicators?</h3>
                     {this.context.newinfectionindicators.map(indicator =>
-                        <div key={indicator.id}>
-                            <label>
+                        <div className="infection" key={indicator.id}>
+                            <label className="infection">
                                 <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} name="newinfectionindicators" value={indicator.indicator} className={indicator.indicator}/>
                                 {indicator.indicator}
                             </label>
                             <br/>
                         </div>
                     )}
-                </section>
-                <section className="form-section symptoms">
-                    <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>
+                </fieldset>
+                <fieldset className="form-section symptoms">
+                    <legend className="symptoms"><h3>How do you feel today?</h3></legend>
                     {this.context.symptoms.map(symptom =>
                         <div key={symptom.id} className="form-section-symptoms">
                         <label className="symptom">{symptom.symptom}</label>
@@ -138,13 +140,16 @@ export default class SymptomLog extends Component {
                         <br/>
                         </div>
                         )}
-                </section>
+                </fieldset>
                
-              
-                <button type="submit">
-                    Save
-                </button>
-                <button>Reset</button>
+                <div className="buttons">
+                    <button type="submit">
+                        Save
+                    </button>
+                    <button className="reset" type="reset">
+                        Reset
+                    </button>
+                </div>
                 
             </form>
             </>

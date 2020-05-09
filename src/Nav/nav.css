@@ -12,5 +12,24 @@ li {
 }
 
 a {
+    padding: 0px;
+}
+
+a.link-nav {
     padding: 8px;
 }
+
+a.link-nav:hover, a.sign-out:hover {
+    color: #4a81ff;
+}
+
+.sign-out-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+
+}
+

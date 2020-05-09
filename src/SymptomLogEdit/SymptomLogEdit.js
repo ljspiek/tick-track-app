@@ -196,23 +196,25 @@ export default class SymptomLogEdit extends Component {
                 
                     <form id="log-symptoms" onSubmit={(e) => {this.handleSubmit(e)}}>
                     <section className="form-section overall-health">
-                        <label htmlFor="log-date">Date:</label>
+                        <label className="log-date">Date:</label>
                         <input onChange={(e) => {this.handleInputChange(e)}} type="date" id="log-date" name="logDate" defaultValue={this.state.currentlog.header[0].date}/>
-                        <label htmlFor="overall-health"><h3>Overall Health</h3></label>
-                        <p>Generally, do you feel:</p>
-                        {this.context.generalhealth.map(health =>
-                            <div key={`Health_${health.id}`}>
-                                <label>
-                                    <input type="radio" onChange={(e) => {this.handleInputChange(e)}} id={health.id} name="generalhealth" value={health.id} defaultChecked={(health.id === this.state.currentlog.generalhealth[0].id) ? true : false} className="overall-health-radio"/>
-                                    {health.rating}
-                                </label>
-                            </div>
-                        )}
+                        <fieldset className="genhealth-fieldset">
+                            <legend><h3>Rate your Overall Health</h3></legend>
+                                {this.context.generalhealth.map(health =>
+                                    <div className="genhealth" key={`Health_${health.id}`}>
+                                        <label className="genhealth">
+                                            <input type="radio" onChange={(e) => {this.handleInputChange(e)}} id={health.id} name="generalhealth" value={health.id} defaultChecked={(health.id === this.state.currentlog.generalhealth[0].id) ? true : false} className="overall-health-radio"/>
+                                            {health.rating}
+                                        </label>
+                                    </div>
+                                
+                                )}
+                        </fieldset>
                     </section>
-                    <section className="form-section new-infection">
-                        <h3>Since your last symptom log, have there been any of the following:</h3>
+                    <fieldset className="form-section new-infection">
+                        <h3 className="infection-title">Do you have any new infection indicators?</h3>
                         {this.context.newinfectionindicators.map(indicator =>
-                            <div key={`Infection_${indicator.id}`}>
+                            <div className="infection" key={`Infection_${indicator.id}`}>
                                 <label>
                                     <input type="checkbox" onChange={(e) => {this.handleMultipleSelections(e)}} id={indicator.id} value={indicator.indicator} name ={newInfections[indicator.id] || "newinfectionindicators"} className={indicator.indicator} defaultChecked={(newInfections.hasOwnProperty(indicator.id))}/>
                                     {indicator.indicator}
@@ -220,12 +222,12 @@ export default class SymptomLogEdit extends Component {
                                 <br/>
                             </div>
                         )}
-                    </section>
-                    <section className="form-section symptoms">
-                        <label htmlFor="symptoms"><h3>How do you feel today?</h3></label>
+                    </fieldset>
+                    <fieldset className="form-section symptoms">
+                        <legend className="symptoms"><h3>How do you feel today?</h3></legend>
                         {this.context.symptoms.map(symptom =>
-                            <div key={`Symptom_${symptom.id}`}>
-                            <label htmlFor={symptom.symptom}>{symptom.symptom}</label>
+                            <div key={`Symptom_${symptom.id}` } className="form-section-symptoms">
+                            <label className="symptom">{symptom.symptom}</label>
                             <select onChange={(e) => {this.handleSymptomSelections(e)}} id={symptom.id} name ={symptomIds[symptom.id] || symptom.id} defaultValue={symptomEntries[symptom.id] || "1"}>
                                 <option value="1">None</option>
                                 <option value="2">Mild</option>
@@ -235,11 +237,14 @@ export default class SymptomLogEdit extends Component {
                             <br/>
                             </div>
                             )}
-                    </section>
+                    </fieldset>
                    
                   
-                    <button>Update</button>
-                    <button>Cancel</button>
+                    <div className="buttons">
+
+                        <button type="submit">Update</button>
+                        <button className="cancel">Cancel</button>
+                    </div>
                     
                 </form>
                 </div>
