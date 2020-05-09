@@ -16,6 +16,7 @@ import PrivateRoute from './Utilities/PrivateRoute'
 import PublicRoute from './Utilities/PublicRoute'
 import TokenService from './services/token-service'
 import { BrowserRouter } from 'react-router-dom';
+import Footer from './Footer/Footer'
 
 
 
@@ -172,7 +173,7 @@ class App extends Component {
           </main>
         </SymptomsContext.Provider>
       <footer>
-        
+        <Footer/>
       </footer>
       </div>
       </BrowserRouter>

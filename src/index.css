@@ -46,6 +46,17 @@ code {
  
 }
 
+.footer {
+  text-align: right;
+  font-size: 10px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.footer > a:hover {
+  color: #f55d37;
+}
+
 .landing-page-heading:hover {
   color: #30ff3b;
 }
@@ -77,6 +88,8 @@ footer {
   padding: 1% 0;
   
 }
+
+
 
 nav {
   
@@ -511,8 +524,6 @@ section.symptom-summary {
     margin-right: 10px;
   }
 
-  
-
   p.sign-in-dummy {
     margin-left: auto;
     margin-right: auto;
@@ -520,5 +531,23 @@ section.symptom-summary {
     width: 60%;
   }
 
+  fieldset.new-infection,
+  fieldset.genhealth-fieldset, 
+  fieldset.symptoms,
+  div.buttons {
+    width: 60%;
+  }
+
+  div.genhealth {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  fieldset.genhealth-fieldset {
+    width: 40%;
+  }
+  
+  
   
 }
